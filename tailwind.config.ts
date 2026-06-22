@@ -29,7 +29,7 @@ const config: Config = {
       fontSize: {
         eyebrow: ['11px', { lineHeight: '1.2', letterSpacing: '0.14em', fontWeight: '600' }],
         body: ['16px', { lineHeight: '1.65', fontWeight: '400' }],
-        deck: ['16px', { lineHeight: '1.55', fontWeight: '400', fontStyle: 'italic' }],
+        deck: ['16px', { lineHeight: '1.55', fontWeight: '400' }],
         'essay-title': ['22px', { lineHeight: '1.28', letterSpacing: '-0.005em', fontWeight: '500' }],
         section: ['28px', { lineHeight: '1.20', letterSpacing: '-0.012em', fontWeight: '500' }],
         page: ['40px', { lineHeight: '1.14', letterSpacing: '-0.018em', fontWeight: '400' }],
