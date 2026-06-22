@@ -213,6 +213,10 @@ img, picture, video, canvas, svg {
   box-shadow: var(--shadow-lift), var(--shadow-hairline);
 }
 
+.brand-tile-compact {
+  min-height: auto;
+}
+
 .brand-tile h3 {
   color: inherit;
 }
