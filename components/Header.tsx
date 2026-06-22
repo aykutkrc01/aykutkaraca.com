@@ -24,7 +24,7 @@ export default function Header() {
     pathname === href || (href !== '/' && pathname.startsWith(href));
 
   return (
-    <header className="w-full border-b border-[var(--color-border)] bg-[var(--color-cream)]">
+    <header className="site-header">
       <div className="container-page flex items-center justify-between py-[var(--space-lg)] md:py-[var(--space-xl)]">
         {/* Marka — Logo + altyazı */}
         <Link
