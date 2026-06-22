@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 const BRIDGES = [
@@ -27,30 +28,48 @@ const ESSAYS = [
 export default function HomePage() {
   return (
     <div className="container-page">
-      <section className="py-[var(--space-4xl)] md:py-[88px]">
-        <p className="eyebrow">Stratejik Dusunce Merkezi</p>
-        <h1 className="mt-[var(--space-lg)] max-w-[820px] text-hero">
-          Daha fazla yazilim degil, daha iyi yonetilen sirketler.
-        </h1>
-        <p className="mt-[var(--space-xl)] max-w-[660px] text-body text-[var(--color-warm-gray)]">
-          Aykut Karaca; Turk KOBI ve aile sirketleri icin karar, rol, KPI,
-          surec ve yonetim ritmi kuran stratejik operatordur. Yazilim arac,
-          yonetim sistemi amactir.
-        </p>
-        <div className="mt-[var(--space-2xl)] flex flex-col gap-[var(--space-md)] sm:flex-row">
-          <Link
-            href="/manifesto"
-            className="inline-flex justify-center border border-[var(--color-ink)] bg-[var(--color-ink)] px-[var(--space-xl)] py-[var(--space-md)] font-sans text-[14px] font-medium text-[var(--color-cream)]"
-          >
-            Manifestoyu oku
-          </Link>
-          <Link
-            href="/dogru-yer-mi"
-            className="inline-flex justify-center border border-[var(--color-border)] px-[var(--space-xl)] py-[var(--space-md)] font-sans text-[14px] font-medium text-[var(--color-charcoal)]"
-          >
-            Dogru yer mi?
-          </Link>
+      <section className="grid items-end gap-[var(--space-3xl)] py-[var(--space-4xl)] md:grid-cols-[1.2fr_0.8fr] md:py-[88px]">
+        <div>
+          <p className="eyebrow">Stratejik Dusunce Merkezi</p>
+          <h1 className="mt-[var(--space-lg)] max-w-[820px] text-hero">
+            Daha fazla yazilim degil, daha iyi yonetilen sirketler.
+          </h1>
+          <p className="mt-[var(--space-xl)] max-w-[660px] text-body text-[var(--color-warm-gray)]">
+            Aykut Karaca; Turk KOBI ve aile sirketleri icin karar, rol, KPI,
+            surec ve yonetim ritmi kuran stratejik operatordur. Yazilim arac,
+            yonetim sistemi amactir.
+          </p>
+          <div className="mt-[var(--space-2xl)] flex flex-col gap-[var(--space-md)] sm:flex-row">
+            <Link
+              href="/manifesto"
+              className="inline-flex justify-center border border-[var(--color-ink)] bg-[var(--color-ink)] px-[var(--space-xl)] py-[var(--space-md)] font-sans text-[14px] font-medium text-[var(--color-cream)]"
+            >
+              Manifestoyu oku
+            </Link>
+            <Link
+              href="/dogru-yer-mi"
+              className="inline-flex justify-center border border-[var(--color-border)] px-[var(--space-xl)] py-[var(--space-md)] font-sans text-[14px] font-medium text-[var(--color-charcoal)]"
+            >
+              Dogru yer mi?
+            </Link>
+          </div>
         </div>
+
+        <figure className="border border-[var(--color-border)] bg-[var(--color-cream-soft)] p-[var(--space-sm)]">
+          <div className="relative aspect-[4/5] overflow-hidden">
+            <Image
+              src="/images/portraits/aykut-karaca-portrait-01.jpg"
+              alt="Aykut Karaca portre fotografi"
+              fill
+              priority
+              sizes="(min-width: 768px) 34vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <figcaption className="mt-[var(--space-sm)] font-sans text-[12px] text-[var(--color-warm-gray)]">
+            Aykut Karaca
+          </figcaption>
+        </figure>
       </section>
 
       <section className="border-y border-[var(--color-border)] py-[var(--space-3xl)]">
