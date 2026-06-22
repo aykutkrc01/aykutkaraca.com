@@ -8,14 +8,14 @@
    ============================================================ */
 :root {
   /* Renk paleti */
-  --color-cream:        #F6F1E6;
-  --color-cream-soft:   #FAF6EC;
-  --color-cream-dark:   #ECE5D5;
-  --color-charcoal:     #1C1A17;
-  --color-warm-gray:    #6F6A60;
-  --color-light-gray:   #8A857B;
-  --color-border:       #D9D2C2;
-  --color-ink:          #2A3B5F;
+  --color-cream:        #FFFFFF;
+  --color-cream-soft:   #F7F7F5;
+  --color-cream-dark:   #EFEFEC;
+  --color-charcoal:     #0B0B0B;
+  --color-warm-gray:    #6E6E73;
+  --color-light-gray:   #A1A1A6;
+  --color-border:       #E5E5E2;
+  --color-ink:          #0B0B0B;
 
   /* Kategori renkleri — yalnızca etiket pill ve sol border accent */
   --color-cat-ink:      #2A3B5F; /* Yönetim */
@@ -31,12 +31,12 @@
   --space-xl:  24px;
   --space-2xl: 36px;
   --space-3xl: 48px;
-  --space-4xl: 64px;
+  --space-4xl: 80px;
 
   /* Sayfa düzeni */
-  --container-max:        960px;
-  --page-padding:         48px;
-  --page-padding-mobile:  20px;
+  --container-max:        1280px;
+  --page-padding:         64px;
+  --page-padding-mobile:  24px;
 }
 
 /* ============================================================
@@ -57,7 +57,7 @@ body {
   margin: 0;
   background-color: var(--color-cream);
   color: var(--color-charcoal);
-  font-family: var(--font-serif), 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -80,9 +80,9 @@ nav,
 /* Başlık hiyerarşisi */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-family: var(--font-serif), 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
   color: var(--color-charcoal);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 p {
@@ -118,10 +118,10 @@ img, picture, video, canvas, svg {
    ============================================================ */
 .eyebrow {
   font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--color-warm-gray);
 }
 

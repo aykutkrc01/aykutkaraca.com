@@ -25,18 +25,18 @@ export default function Header() {
 
   return (
     <header className="w-full border-b border-[var(--color-border)] bg-[var(--color-cream)]">
-      <div className="container-page flex items-center justify-between py-[var(--space-xl)] md:py-[var(--space-2xl)]">
+      <div className="container-page flex items-center justify-between py-[var(--space-lg)] md:py-[var(--space-xl)]">
         {/* Marka — Logo + altyazı */}
         <Link
           href="/"
           className="group inline-flex flex-col leading-none"
           aria-label="Aykut Karaca — Ana sayfa"
         >
-          <span className="font-serif text-[22px] md:text-[26px] tracking-[-0.01em] text-[var(--color-charcoal)]">
+          <span className="font-sans text-[22px] font-medium leading-none text-[var(--color-charcoal)] md:text-[24px]">
             Aykut Karaca
           </span>
-          <span className="mt-[2px] font-sans text-[11px] tracking-[0.04em] text-[var(--color-warm-gray)]">
-            Yazılar ve kenar notları
+          <span className="mt-[4px] font-sans text-[12px] text-[var(--color-warm-gray)]">
+            Stratejik Düşünce Merkezi
           </span>
         </Link>
 
@@ -50,7 +50,7 @@ export default function Header() {
               key={item.href}
               href={item.href}
               className={[
-                'font-sans text-[14px] tracking-[0.01em]',
+                'font-sans text-[15px]',
                 isActive(item.href)
                   ? 'text-[var(--color-charcoal)] font-medium'
                   : 'text-[var(--color-warm-gray)] hover:text-[var(--color-charcoal)]',
@@ -64,7 +64,7 @@ export default function Header() {
         {/* Mobil hamburger */}
         <button
           type="button"
-          className="md:hidden inline-flex flex-col items-end justify-center gap-[5px] p-[var(--space-sm)] -mr-[var(--space-sm)]"
+          className="md:hidden -mr-[var(--space-sm)] inline-flex flex-col items-end justify-center gap-[5px] p-[var(--space-sm)]"
           aria-label={open ? 'Menüyü kapat' : 'Menüyü aç'}
           aria-expanded={open}
           aria-controls="mobile-nav"

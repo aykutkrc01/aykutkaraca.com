@@ -27,13 +27,13 @@ const config: Config = {
         sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        eyebrow: ['11px', { lineHeight: '1.2', letterSpacing: '0.14em', fontWeight: '600' }],
+        eyebrow: ['13px', { lineHeight: '1.35', letterSpacing: '0', fontWeight: '500' }],
         body: ['16px', { lineHeight: '1.65', fontWeight: '400' }],
         deck: ['16px', { lineHeight: '1.55', fontWeight: '400' }],
-        'essay-title': ['22px', { lineHeight: '1.28', letterSpacing: '-0.005em', fontWeight: '500' }],
-        section: ['28px', { lineHeight: '1.20', letterSpacing: '-0.012em', fontWeight: '500' }],
-        page: ['40px', { lineHeight: '1.14', letterSpacing: '-0.018em', fontWeight: '400' }],
-        hero: ['52px', { lineHeight: '1.10', letterSpacing: '-0.022em', fontWeight: '400' }],
+        'essay-title': ['24px', { lineHeight: '1.22', letterSpacing: '0', fontWeight: '500' }],
+        section: ['clamp(36px, 4vw, 64px)', { lineHeight: '1.02', letterSpacing: '0', fontWeight: '500' }],
+        page: ['clamp(48px, 5vw, 80px)', { lineHeight: '1.02', letterSpacing: '0', fontWeight: '500' }],
+        hero: ['clamp(52px, 6vw, 88px)', { lineHeight: '1.02', letterSpacing: '0', fontWeight: '500' }],
       },
       spacing: {
         xs: 'var(--space-xs)',

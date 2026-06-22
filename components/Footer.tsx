@@ -48,28 +48,28 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-[var(--space-4xl)] border-t border-[var(--color-border)] bg-[var(--color-cream)]">
-      <div className="container-page py-[var(--space-3xl)] md:py-[var(--space-4xl)]">
-        <div className="grid grid-cols-1 gap-[var(--space-3xl)] md:grid-cols-3">
+    <footer className="mt-[120px] border-t border-[var(--color-border)] bg-[var(--color-cream)]">
+      <div className="container-page py-[var(--space-4xl)] md:py-[96px]">
+        <div className="grid grid-cols-1 gap-[var(--space-4xl)] md:grid-cols-3">
           {/* Sol — marka ve ilke */}
           <div className="md:col-span-1">
-            <p className="font-serif text-[20px] leading-[1.3] text-[var(--color-charcoal)]">
+            <p className="font-sans text-[24px] font-medium leading-[1.05] text-[var(--color-charcoal)]">
               Aykut Karaca
             </p>
-            <p className="mt-[var(--space-sm)] font-sans text-[12px] uppercase tracking-[0.14em] text-[var(--color-warm-gray)]">
+            <p className="mt-[var(--space-sm)] font-sans text-[13px] text-[var(--color-warm-gray)]">
               Stratejik Düşünce Merkezi
             </p>
-            <p className="mt-[var(--space-lg)] font-serif italic text-[15px] leading-[1.55] text-[var(--color-warm-gray)]">
+            <p className="mt-[var(--space-xl)] max-w-[260px] font-sans text-[15px] leading-[1.55] text-[var(--color-warm-gray)]">
               Örüntü yayınlanır, vaka yayınlanmaz.
             </p>
           </div>
 
           {/* Orta — bülten pasif toplama */}
           <div className="md:col-span-1">
-            <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-warm-gray)]">
+            <p className="font-sans text-[13px] font-medium text-[var(--color-warm-gray)]">
               Bülten
             </p>
-            <p className="mt-[var(--space-sm)] font-serif text-[15px] leading-[1.55] text-[var(--color-charcoal)]">
+            <p className="mt-[var(--space-sm)] font-sans text-[16px] leading-[1.55] text-[var(--color-charcoal)]">
               Yazılar yayınlandığında haber ver. Reklam yok, alıntı yok.
             </p>
 
@@ -88,14 +88,14 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="ornek@kurumadresi.com"
-                className="flex-1 border border-[var(--color-border)] bg-[var(--color-cream-soft)] px-[var(--space-md)] py-[var(--space-sm)] font-sans text-[14px] text-[var(--color-charcoal)] placeholder:text-[var(--color-light-gray)] focus:border-[var(--color-ink)] focus:outline-none"
+                className="flex-1 rounded-full border border-[var(--color-border)] bg-[var(--color-cream-soft)] px-[var(--space-lg)] py-[var(--space-md)] font-sans text-[14px] text-[var(--color-charcoal)] placeholder:text-[var(--color-light-gray)] focus:border-[var(--color-ink)] focus:outline-none"
                 disabled={status === 'submitting' || status === 'ok'}
                 aria-describedby="footer-email-status"
               />
               <button
                 type="submit"
                 disabled={status === 'submitting' || status === 'ok'}
-                className="border border-[var(--color-ink)] bg-[var(--color-ink)] px-[var(--space-lg)] py-[var(--space-sm)] font-sans text-[13px] font-medium text-[var(--color-cream)] transition-opacity duration-200 ease-out hover:opacity-90 disabled:opacity-60"
+                className="rounded-full border border-[var(--color-ink)] bg-[var(--color-ink)] px-[var(--space-xl)] py-[var(--space-md)] font-sans text-[13px] font-medium text-[var(--color-cream)] transition-opacity duration-200 ease-out hover:opacity-90 disabled:opacity-60"
               >
                 {status === 'submitting' ? 'Gönderiliyor' : status === 'ok' ? 'Alındı' : 'Kaydol'}
               </button>
@@ -115,7 +115,7 @@ export default function Footer() {
 
           {/* Sağ — marka köprüleri */}
           <div className="md:col-span-1">
-            <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-warm-gray)]">
+            <p className="font-sans text-[13px] font-medium text-[var(--color-warm-gray)]">
               Çalışmalar
             </p>
             <ul className="mt-[var(--space-md)] flex flex-col gap-[var(--space-md)]">
@@ -127,7 +127,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="group inline-flex flex-col"
                   >
-                    <span className="font-serif text-[16px] text-[var(--color-charcoal)] group-hover:text-[var(--color-ink)]">
+                    <span className="font-sans text-[17px] font-medium text-[var(--color-charcoal)] group-hover:text-[var(--color-ink)]">
                       {b.label}
                     </span>
                     <span className="font-sans text-[12px] text-[var(--color-warm-gray)]">
