@@ -13,6 +13,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: '/yazilar', label: 'Yazılar' },
   { href: '/yontem', label: 'Yöntem' },
   { href: '/hakkinda', label: 'Hakkında' },
+  { href: '/dogru-yer-mi', label: 'Doğru Yer Mi?' },
 ];
 
 export default function Header() {
@@ -28,11 +29,14 @@ export default function Header() {
         {/* Marka — Logo + altyazı */}
         <Link
           href="/"
-          className="inline-flex leading-none"
+          className="group inline-flex flex-col leading-none"
           aria-label="Aykut Karaca — Ana sayfa"
         >
-          <span className="font-sans text-[18px] font-medium leading-none text-[var(--color-charcoal)] md:text-[19px]">
+          <span className="font-sans text-[22px] font-medium leading-none text-[var(--color-charcoal)] md:text-[24px]">
             Aykut Karaca
+          </span>
+          <span className="mt-[4px] font-sans text-[12px] text-[var(--color-warm-gray)]">
+            Stratejik Düşünce Merkezi
           </span>
         </Link>
 

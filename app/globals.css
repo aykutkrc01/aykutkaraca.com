@@ -3,12 +3,11 @@
 @tailwind utilities;
 
 /* ============================================================
-   Tasarım Token'ları — tek kaynak.
-   Component içinde hex değer kullanılmaz; her zaman var(--…).
-   Renk: krem + mürekkep. Aksan yok.
+   Tasarım Token'ları — :root altında tek kaynak
+   Component içinde hex değer kullanılmaz; her zaman var(--…)
    ============================================================ */
 :root {
-  /* Renk paleti — yalnızca krem ve mürekkep */
+  /* Renk paleti */
   --color-cream:        #FFFFFF;
   --color-cream-soft:   #F7F7F5;
   --color-cream-dark:   #EFEFEC;
@@ -19,6 +18,16 @@
   --color-ink:          #0B0B0B;
   --color-surface:      #F5F5F7;
   --color-surface-high: #FFFFFF;
+  --color-peach:        #FFE0CF;
+  --color-rose:         #FFE9EF;
+  --color-apricot:      #FFEBCB;
+  --color-mist:         #EEF1F5;
+
+  /* Kategori renkleri — yalnızca etiket pill ve sol border accent */
+  --color-cat-ink:      #2A3B5F; /* Yönetim */
+  --color-cat-terra:    #B86A4F; /* Saha */
+  --color-cat-sage:     #6E8055; /* Kütüphane */
+  --color-cat-marigold: #B8861E; /* Yolda */
 
   /* Boşluk ölçeği */
   --space-xs:  4px;
@@ -35,24 +44,11 @@
   --page-padding:         64px;
   --page-padding-mobile:  24px;
 
-  /* Bölüm ritmi — tek skala: 96 / 144 / 192 */
-  --rhythm-sm:  96px;
-  --rhythm-md:  144px;
-  --rhythm-lg:  192px;
-
-  /* Köşe yarıçapı — üç değer */
-  --radius-sm: 12px;
-  --radius-md: 16px;
-  --radius-lg: 20px;
-
-  /* Gölge — yere yapışık, bulutta değil */
-  --shadow-soft:     0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.05);
-  --shadow-lift:     0 1px 2px rgba(0, 0, 0, 0.05), 0 14px 36px rgba(0, 0, 0, 0.07);
-  --shadow-hairline: inset 0 0 0 1px rgba(11, 11, 11, 0.06);
-
-  /* Hareket */
-  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration-base: 320ms;
+  /* Yuzey ve golge dili */
+  --radius-surface: 34px;
+  --shadow-soft: 0 18px 52px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-lift: 0 32px 90px rgba(0, 0, 0, 0.14), 0 8px 24px rgba(0, 0, 0, 0.07);
+  --shadow-hairline: inset 0 0 0 1px rgba(11, 11, 11, 0.07);
 }
 
 /* ============================================================
@@ -79,7 +75,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-feature-settings: 'kern', 'liga', 'calt', 'ss01', 'cv11';
+  font-feature-settings: 'kern', 'liga', 'calt';
 }
 
 /* UI bileşenleri ve etiketler Inter ile yazılır */
@@ -93,34 +89,39 @@ nav,
   font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
 }
 
-/* Başlık hiyerarşisi — Source Serif 4, ışık ağırlık */
+/* Başlık hiyerarşisi */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-family: var(--font-serif), 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
   color: var(--color-charcoal);
-  font-weight: 400;
-  letter-spacing: -0.015em;
+  font-weight: 500;
 }
 
 p {
   margin: 0;
 }
 
-/* Link davranışı */
+/* Link davranışı — kategori vurguları için yalnızca renk değişir */
 a {
   color: var(--color-ink);
   text-decoration: none;
-  transition: opacity var(--duration-base) var(--ease-premium);
+  transition:
+    background-color 200ms ease-out,
+    border-color 200ms ease-out,
+    box-shadow 200ms ease-out,
+    color 200ms ease-out,
+    opacity 200ms ease-out,
+    transform 200ms ease-out;
 }
 
 a:hover {
-  opacity: 0.72;
+  opacity: 0.78;
 }
 
 /* Görünür focus halkası */
 :focus-visible {
-  outline: 1.5px solid var(--color-ink);
-  outline-offset: 3px;
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
   border-radius: 2px;
 }
 
@@ -135,10 +136,10 @@ img, picture, video, canvas, svg {
    ============================================================ */
 .eyebrow {
   font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--color-warm-gray);
 }
 
@@ -155,140 +156,160 @@ img, picture, video, canvas, svg {
   z-index: 50;
   width: 100%;
   border-bottom: 1px solid rgba(229, 229, 226, 0.84);
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: saturate(160%) blur(12px);
-  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.78), 0 12px 32px rgba(0, 0, 0, 0.035);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
 }
 
 .surface-raised {
-  border: 1px solid rgba(11, 11, 11, 0.06);
+  border: 1px solid rgba(11, 11, 11, 0.07);
   background: var(--color-surface-high);
   box-shadow: var(--shadow-soft);
 }
 
 .surface-muted {
-  border: 1px solid rgba(11, 11, 11, 0.05);
-  background: var(--color-surface);
+  border: 1px solid rgba(11, 11, 11, 0.06);
+  background:
+    radial-gradient(circle at 80% 12%, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0) 38%),
+    var(--color-surface);
+  box-shadow: var(--shadow-soft);
 }
 
-/* Bölüm ritmi yardımcıları */
-.rhythm-sm { padding-block: var(--rhythm-sm); }
-.rhythm-md { padding-block: var(--rhythm-md); }
-.rhythm-lg { padding-block: var(--rhythm-lg); }
+.problem-white {
+  background: var(--color-surface-high);
+}
 
-/* Hover'da tek mikro hareket: hairline parlama */
-.lift-link {
-  transition:
-    border-color var(--duration-base) var(--ease-premium),
-    color var(--duration-base) var(--ease-premium);
+.problem-mist {
+  background: var(--color-mist);
+}
+
+.problem-apricot {
+  background: var(--color-apricot);
 }
 
 .lift-link:hover {
   opacity: 1;
-  border-color: var(--color-ink);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
 }
 
-/* ============================================================
-   Eski sınıflar — yeni sade dile bağlandı.
-   Tüm pastel tile'lar tek bir nötr yüzey üretir.
-   "tile-ink" karanlık karakterini korur.
-   ============================================================ */
 .brand-tile {
   position: relative;
+  isolation: isolate;
   display: flex;
-  min-height: 320px;
+  min-height: 380px;
   overflow: hidden;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: var(--radius-lg);
-  padding: clamp(20px, 2.4vw, 32px);
-  background: var(--color-surface-high);
-  border: 1px solid rgba(11, 11, 11, 0.06);
-  box-shadow: var(--shadow-soft);
-  color: var(--color-charcoal);
-  transition:
-    border-color var(--duration-base) var(--ease-premium),
-    box-shadow var(--duration-base) var(--ease-premium);
+  border-radius: var(--radius-surface);
+  padding: clamp(24px, 3vw, 38px);
+  box-shadow: var(--shadow-soft), var(--shadow-hairline);
 }
 
 .brand-tile:hover {
   opacity: 1;
-  border-color: rgba(11, 11, 11, 0.18);
-  box-shadow: var(--shadow-lift);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift), var(--shadow-hairline);
 }
 
-.brand-tile h3 { color: inherit; }
-.brand-tile-compact { min-height: auto; }
-
-/* Tüm pastel ton sınıfları — nötr yüzey */
-.tile-peach,
-.tile-rose,
-.tile-mist {
-  background: var(--color-surface-high);
+.brand-tile-compact {
+  min-height: auto;
 }
 
-.problem-white,
-.problem-mist,
-.problem-apricot {
-  background: var(--color-surface-high);
+.brand-tile h3 {
+  color: inherit;
 }
 
-/* Karanlık ton — Steve Jobs siyahı, gradient yok */
+.brand-tile::after {
+  position: absolute;
+  right: -18%;
+  bottom: -22%;
+  z-index: -1;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  content: '';
+  filter: blur(6px);
+}
+
 .tile-ink {
-  background: var(--color-charcoal);
   color: var(--color-cream);
-  border-color: rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at 72% 16%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 34%),
+    linear-gradient(135deg, #060606 0%, #151515 55%, #0B0B0B 100%);
 }
 
-.tile-ink h3 { color: var(--color-cream); }
+.tile-peach {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0) 34%),
+    linear-gradient(140deg, var(--color-peach) 0%, #FFF6EF 100%);
+}
 
-.tile-muted { color: var(--color-warm-gray); }
-.tile-ink .tile-muted { color: rgba(255, 255, 255, 0.62); }
+.tile-rose {
+  background:
+    radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0) 34%),
+    linear-gradient(140deg, var(--color-rose) 0%, #FFF7FA 100%);
+}
+
+.tile-mist {
+  background:
+    radial-gradient(circle at 74% 18%, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0) 36%),
+    linear-gradient(140deg, var(--color-mist) 0%, #FFFFFF 100%);
+}
+
+.tile-muted {
+  color: var(--color-warm-gray);
+}
+
+.tile-ink .tile-muted {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.tile-ink .tile-cta {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-cream);
+}
 
 .tile-cta {
   display: inline-flex;
   width: max-content;
   align-items: center;
   border-radius: 999px;
-  background: var(--color-surface);
-  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.64);
+  padding: 10px 16px;
   color: var(--color-charcoal);
   font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
   font-size: 13px;
   font-weight: 500;
-  border: 1px solid var(--color-border);
+  box-shadow: inset 0 0 0 1px rgba(11, 11, 11, 0.07);
 }
 
-.tile-ink .tile-cta {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--color-cream);
-  border-color: rgba(255, 255, 255, 0.14);
-}
-
-/* Mini pill — sade editoryal etiket, blur ve renk yok */
 .mini-pill {
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  background: transparent;
-  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 8px 12px;
   color: var(--color-warm-gray);
   font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 1px solid var(--color-border);
-}
-
-.tile-ink .mini-pill {
-  color: rgba(255, 255, 255, 0.7);
-  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow-hairline), 0 12px 28px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 @media (min-width: 768px) {
   .container-page {
     padding-inline: var(--page-padding);
+  }
+}
+
+@media (max-width: 767px) {
+  .brand-tile {
+    min-height: 310px;
   }
 }
 

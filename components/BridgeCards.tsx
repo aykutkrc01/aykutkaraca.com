@@ -3,6 +3,8 @@ type Bridge = {
   kicker: string;
   text: string;
   href: string;
+  cta: string;
+  tone: string;
 };
 
 const BRIDGES: Bridge[] = [
@@ -11,60 +13,60 @@ const BRIDGES: Bridge[] = [
     kicker: 'Yönetim sistemi',
     text: 'KOBİ ve aile şirketleri için süreç, KPI, dashboard ve AI destekli teslimat katmanı.',
     href: 'https://tomorrowdigital.co',
+    cta: 'Tomorrow Digital’a git',
+    tone: 'tile-ink',
   },
   {
     title: 'TARİF',
     kicker: 'Dikey SaaS',
     text: 'Gıda üreticileri için reçete, üretim, stok ve izlenebilirlik odağı.',
     href: 'https://tarif.co',
+    cta: 'TARİF’e git',
+    tone: 'tile-peach',
   },
   {
     title: 'TomorrowHR',
     kicker: 'Organizasyon hafızası',
     text: 'İK ve organizasyon geçmiş uzmanlığı; bugün yönetim sistemi yaklaşımını besleyen damar.',
     href: 'https://tomorrowhr.co',
+    cta: 'TomorrowHR’a git',
+    tone: 'tile-rose',
   },
 ];
 
 export default function BridgeCards() {
   return (
-    <section className="rhythm-md border-t border-[var(--color-border)]">
-      <div className="max-w-[640px]">
+    <section className="py-[120px]">
+      <div className="max-w-[820px]">
         <p className="eyebrow">Marka köprüleri</p>
         <h2 className="mt-[var(--space-lg)] text-section">
           Düşünce merkezi işi doğru adrese yönlendirir.
         </h2>
       </div>
-      <ul className="mt-[var(--space-3xl)] divide-y divide-[var(--color-border)] border-y border-[var(--color-border)]">
+      <div className="mt-[var(--space-2xl)] grid gap-[var(--space-xl)] md:grid-cols-3">
         {BRIDGES.map((bridge) => (
-          <li key={bridge.title}>
-            <a
-              href={bridge.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group grid grid-cols-[1fr_auto] items-baseline gap-[var(--space-xl)] py-[var(--space-2xl)] md:grid-cols-[200px_1fr_auto]"
-            >
-              <span className="font-sans text-[11px] uppercase tracking-[0.14em] text-[var(--color-warm-gray)]">
+          <a
+            key={bridge.title}
+            href={bridge.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`brand-tile ${bridge.tone}`}
+          >
+            <div>
+              <p className="font-sans text-[13px] font-medium tile-muted">
                 {bridge.kicker}
-              </span>
-              <div>
-                <h3 className="font-serif text-[32px] font-light leading-[1.05] text-[var(--color-charcoal)] md:text-[40px]">
-                  {bridge.title}
-                </h3>
-                <p className="mt-[var(--space-md)] max-w-[60ch] font-sans text-[15px] leading-[1.55] text-[var(--color-warm-gray)]">
-                  {bridge.text}
-                </p>
-              </div>
-              <span
-                aria-hidden
-                className="font-sans text-[14px] text-[var(--color-warm-gray)] transition-transform duration-[320ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[4px] group-hover:text-[var(--color-charcoal)]"
-              >
-                →
-              </span>
-            </a>
-          </li>
+              </p>
+              <h3 className="mt-[var(--space-lg)] font-sans text-[42px] font-medium leading-[0.98] md:text-[54px]">
+                {bridge.title}
+              </h3>
+              <p className="mt-[var(--space-lg)] max-w-[360px] font-sans text-[17px] leading-[1.5] tile-muted">
+                {bridge.text}
+              </p>
+            </div>
+            <span className="tile-cta">{bridge.cta}</span>
+          </a>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }
