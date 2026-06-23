@@ -13,10 +13,10 @@ export default function HomePage() {
       <ManifestHero />
       <ProblemBlock />
       <YontemPreview />
-      <div className="grid gap-[var(--space-xl)] py-[96px] md:grid-cols-2">
+      <section className="rhythm-md grid gap-[var(--space-4xl)] border-t border-[var(--color-border)] md:grid-cols-2">
         <RecentEssays />
         <SahaPreview />
-      </div>
+      </section>
       <AboutPreview />
       <BridgeCards />
       <DogruYerCTA />

@@ -4,30 +4,35 @@ const STEPS = ['Teşhis', 'KPI', 'Süreç', 'Rol', 'Dashboard', 'Yönetim ritmi'
 
 export default function YontemPreview() {
   return (
-    <section className="grid gap-[var(--space-4xl)] py-[120px] md:grid-cols-[0.9fr_1.1fr]">
+    <section className="rhythm-md grid gap-[var(--space-4xl)] border-t border-[var(--color-border)] md:grid-cols-[0.9fr_1.1fr]">
       <div>
         <p className="eyebrow">Yöntem</p>
-        <h2 className="mt-[var(--space-lg)] text-section">Rapor değil. Çalışan sistem.</h2>
-        <p className="mt-[var(--space-xl)] max-w-[420px] font-sans text-[18px] leading-[1.55] text-[var(--color-warm-gray)]">
-          Her adım bir çıktı üretir. Yönetim dili, şirketin günlük karar ritmine bağlanır.
+        <h2 className="mt-[var(--space-lg)] text-section">
+          Rapor değil. Çalışan sistem.
+        </h2>
+        <p className="mt-[var(--space-xl)] max-w-[44ch] text-deck text-[var(--color-warm-gray)]">
+          Her adım bir çıktı üretir. Yönetim dili, şirketin günlük karar
+          ritmine bağlanır.
         </p>
         <Link
           href="/yontem"
-          className="mt-[var(--space-xl)] inline-flex rounded-full border border-[var(--color-border)] bg-[var(--color-surface-high)] px-[var(--space-lg)] py-[12px] font-sans text-[14px] font-medium text-[var(--color-charcoal)] shadow-[0_14px_30px_rgba(0,0,0,0.055)]"
+          className="lift-link mt-[var(--space-2xl)] inline-flex items-center border-b border-[var(--color-ink)] pb-[2px] font-sans text-[14px] font-medium text-[var(--color-charcoal)]"
         >
           Yöntemi gör
         </Link>
       </div>
-      <ol className="surface-raised grid gap-0 rounded-[36px] p-[var(--space-md)] md:p-[var(--space-lg)]">
+      <ol className="grid gap-0 self-start">
         {STEPS.map((step, index) => (
           <li
             key={step}
-            className="flex items-center gap-[var(--space-xl)] rounded-[24px] px-[var(--space-lg)] py-[var(--space-lg)] transition-colors duration-200 hover:bg-[var(--color-surface)]"
+            className="flex items-baseline gap-[var(--space-xl)] border-t border-[var(--color-border)] py-[var(--space-xl)] last:border-b"
           >
-            <span className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-full bg-[var(--color-charcoal)] font-sans text-[11px] font-medium text-[var(--color-cream)]">
+            <span className="font-sans text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-warm-gray)] tabular-nums">
               {String(index + 1).padStart(2, '0')}
             </span>
-            <span className="font-sans text-[28px] font-medium leading-none md:text-[36px]">{step}</span>
+            <span className="font-serif text-[28px] font-light leading-[1.05] text-[var(--color-charcoal)] md:text-[34px]">
+              {step}
+            </span>
           </li>
         ))}
       </ol>

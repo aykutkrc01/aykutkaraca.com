@@ -1,47 +1,47 @@
 type ProblemItem = {
   title: string;
+  number: string;
   label: string;
-  tone: string;
 };
 
 const PROBLEMS: ProblemItem[] = [
   {
     title: 'KPI yazılı değilse dashboard karar üretmez.',
-    label: '01 / Ölçü',
-    tone: 'problem-white',
+    number: '01',
+    label: 'Ölçü',
   },
   {
     title: 'Yetki net değilse raporlar davranışa dönüşmez.',
-    label: '02 / Rol',
-    tone: 'problem-mist',
+    number: '02',
+    label: 'Rol',
   },
   {
     title: 'Kurucu olmadan iş yürümüyorsa teknoloji problemi değil, sistem problemi vardır.',
-    label: '03 / Ritim',
-    tone: 'problem-apricot',
+    number: '03',
+    label: 'Ritim',
   },
 ];
 
 export default function ProblemBlock() {
   return (
-    <section className="py-[96px]">
-      <div className="surface-muted rounded-[42px] p-[var(--space-xl)] md:p-[var(--space-3xl)]">
-        <p className="eyebrow">Problem</p>
-        <div className="mt-[var(--space-2xl)] grid gap-[var(--space-lg)] md:grid-cols-3">
-          {PROBLEMS.map((item) => (
-            <article
-              key={item.title}
-              className={`${item.tone} surface-raised rounded-[30px] p-[var(--space-xl)] md:min-h-[320px] md:p-[var(--space-2xl)]`}
-            >
-              <p className="font-sans text-[13px] font-medium text-[var(--color-warm-gray)]">
-                {item.label}
-              </p>
-              <h2 className="mt-[var(--space-2xl)] font-sans text-[28px] font-medium leading-[1.12] text-[var(--color-charcoal)] md:text-[34px]">
-                {item.title}
-              </h2>
-            </article>
-          ))}
-        </div>
+    <section className="rhythm-md border-t border-[var(--color-border)]">
+      <p className="eyebrow">Problem</p>
+      <div className="mt-[var(--space-3xl)] grid gap-x-[var(--space-3xl)] gap-y-[var(--space-2xl)] md:grid-cols-3">
+        {PROBLEMS.map((item) => (
+          <article
+            key={item.title}
+            className="flex flex-col gap-[var(--space-xl)]"
+          >
+            <div className="flex items-baseline gap-[var(--space-md)] font-sans text-[12px] uppercase tracking-[0.14em] text-[var(--color-warm-gray)]">
+              <span>{item.number}</span>
+              <span className="h-[1px] w-[24px] bg-[var(--color-border)]" />
+              <span>{item.label}</span>
+            </div>
+            <h2 className="max-w-[28ch] font-serif text-[26px] leading-[1.18] text-[var(--color-charcoal)] md:text-[30px]">
+              {item.title}
+            </h2>
+          </article>
+        ))}
       </div>
     </section>
   );
