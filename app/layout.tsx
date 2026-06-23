@@ -36,11 +36,20 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} — Stratejik Düşünce Merkezi`,
     description: SITE_TAGLINE,
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${SITE_NAME} — Stratejik Düşünce Merkezi`,
     description: SITE_TAGLINE,
+    images: ['/twitter-image'],
   },
   alternates: {
     canonical: SITE_URL,
