@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Source_Serif_4, Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/lib/site';
 import './globals.css';
 
 const sourceSerif = Source_Serif_4({
@@ -18,10 +19,6 @@ const inter = Inter({
   variable: '--font-sans',
   display: 'swap',
 });
-
-const SITE_URL = 'https://aykutkaraca.com';
-const SITE_NAME = 'Aykut Karaca';
-const SITE_TAGLINE = 'Daha fazla yazılım değil, daha iyi yönetilen şirketler.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

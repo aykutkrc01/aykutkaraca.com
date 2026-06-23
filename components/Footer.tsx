@@ -1,6 +1,3 @@
-'use client';
-
-import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 
 type BrandLink = {
@@ -28,23 +25,6 @@ const BRAND_LINKS: BrandLink[] = [
 ];
 
 export default function Footer() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'ok' | 'err'>('idle');
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (!email || status === 'submitting') return;
-    setStatus('submitting');
-    try {
-      // Pasif toplama — backend hazır olduğunda /api/subscribe'a bağlanır.
-      await new Promise((r) => setTimeout(r, 400));
-      setStatus('ok');
-      setEmail('');
-    } catch {
-      setStatus('err');
-    }
-  }
-
   const year = new Date().getFullYear();
 
   return (
@@ -64,52 +44,17 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Orta — bülten pasif toplama */}
+          {/* Orta — bülten hazırlık alanı */}
           <div className="md:col-span-1">
             <p className="font-sans text-[13px] font-medium text-[var(--color-warm-gray)]">
               Bülten
             </p>
             <p className="mt-[var(--space-sm)] font-sans text-[16px] leading-[1.55] text-[var(--color-charcoal)]">
-              Yazılar yayınlandığında haber ver. Reklam yok, alıntı yok.
+              Yazılar yayınlandığında haber veren sade bir bülten altyapısı hazırlanıyor.
             </p>
 
-            <form
-              onSubmit={handleSubmit}
-              className="mt-[var(--space-md)] flex flex-col gap-[var(--space-sm)] sm:flex-row"
-              noValidate
-            >
-              <label htmlFor="footer-email" className="sr-only">
-                E-posta adresi
-              </label>
-              <input
-                id="footer-email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="ornek@kurumadresi.com"
-                className="flex-1 rounded-full border border-[var(--color-border)] bg-[var(--color-cream-soft)] px-[var(--space-lg)] py-[var(--space-md)] font-sans text-[14px] text-[var(--color-charcoal)] placeholder:text-[var(--color-light-gray)] focus:border-[var(--color-ink)] focus:outline-none"
-                disabled={status === 'submitting' || status === 'ok'}
-                aria-describedby="footer-email-status"
-              />
-              <button
-                type="submit"
-                disabled={status === 'submitting' || status === 'ok'}
-                className="rounded-full border border-[var(--color-ink)] bg-[var(--color-ink)] px-[var(--space-xl)] py-[var(--space-md)] font-sans text-[13px] font-medium text-[var(--color-cream)] transition-opacity duration-200 ease-out hover:opacity-90 disabled:opacity-60"
-              >
-                {status === 'submitting' ? 'Gönderiliyor' : status === 'ok' ? 'Alındı' : 'Kaydol'}
-              </button>
-            </form>
-
-            <p
-              id="footer-email-status"
-              className="mt-[var(--space-sm)] font-sans text-[12px] text-[var(--color-warm-gray)]"
-            >
-              {status === 'ok'
-                ? 'Onay e-postası yola çıkıyor. Lütfen gelen kutunuzu kontrol edin.'
-                : status === 'err'
-                ? 'Bir aksilik oldu, biraz sonra tekrar deneyin.'
-                : 'Çift onaylı kayıt. Cookie kullanılmaz. KVKK uyumlu.'}
+            <p className="mt-[var(--space-md)] inline-flex rounded-full bg-[var(--color-surface)] px-[var(--space-lg)] py-[12px] font-sans text-[13px] font-medium text-[var(--color-warm-gray)] shadow-[inset_0_0_0_1px_rgba(11,11,11,0.05)]">
+              Supabase sonrası açılacak
             </p>
           </div>
 
