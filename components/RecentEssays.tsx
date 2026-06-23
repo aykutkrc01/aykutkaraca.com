@@ -1,10 +1,5 @@
 import Link from 'next/link';
-
-const ESSAYS = [
-  'KOBİ’nin sorunu neden yazılım eksikliği değildir?',
-  'Dashboard neden yönetim sistemi değildir?',
-  'Aile şirketinde karar mimarisi nasıl kurulur?',
-];
+import { essays } from '@/lib/essays';
 
 export default function RecentEssays() {
   return (
@@ -24,11 +19,19 @@ export default function RecentEssays() {
         </Link>
       </div>
       <ul className="mt-[var(--space-2xl)] grid gap-[var(--space-md)]">
-        {ESSAYS.map((essay) => (
-          <li key={essay}>
-            <span className="block rounded-[24px] bg-[var(--color-surface)] px-[var(--space-lg)] py-[var(--space-lg)] font-sans text-[24px] font-medium leading-[1.2] shadow-[inset_0_0_0_1px_rgba(11,11,11,0.05)] md:text-[30px]">
-              {essay}
-            </span>
+        {essays.map((essay) => (
+          <li key={essay.slug}>
+            <Link
+              href={`/yazilar/${essay.slug}`}
+              className="block rounded-[24px] bg-[var(--color-surface)] px-[var(--space-lg)] py-[var(--space-lg)] font-sans shadow-[inset_0_0_0_1px_rgba(11,11,11,0.05)] hover:opacity-100 hover:shadow-[inset_0_0_0_1px_rgba(11,11,11,0.08),0_18px_42px_rgba(0,0,0,0.07)]"
+            >
+              <span className="block text-[13px] font-medium text-[var(--color-warm-gray)]">
+                {essay.category} · {essay.readingTime}
+              </span>
+              <span className="mt-[var(--space-sm)] block text-[24px] font-medium leading-[1.2] md:text-[30px]">
+                {essay.title}
+              </span>
+            </Link>
           </li>
         ))}
       </ul>
