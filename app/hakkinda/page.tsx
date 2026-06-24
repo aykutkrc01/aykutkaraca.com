@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import JsonLd from '@/components/JsonLd';
 import { createPageMetadata } from '@/lib/seo';
+import { breadcrumbJsonLd, webPageJsonLd } from '@/lib/structured-data';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Hakkında',
@@ -63,6 +65,22 @@ const BRANDS = [
 export default function HakkindaPage() {
   return (
     <div className="container-page">
+      <JsonLd
+        id="hakkinda-webpage-json-ld"
+        data={webPageJsonLd({
+          title: 'Hakkında',
+          description:
+            'Aykut Karaca hakkında: KOBİ ve aile şirketleri için karar, KPI, süreç, rol, dashboard ve yönetim ritmi kuran stratejik operatör.',
+          path: '/hakkinda',
+        })}
+      />
+      <JsonLd
+        id="hakkinda-breadcrumb-json-ld"
+        data={breadcrumbJsonLd([
+          { name: 'Ana sayfa', path: '/' },
+          { name: 'Hakkında', path: '/hakkinda' },
+        ])}
+      />
       <header className="grid gap-[var(--space-4xl)] py-[var(--space-4xl)] md:min-h-[760px] md:grid-cols-[1.05fr_0.95fr] md:items-center md:py-[96px]">
         <div>
           <p className="eyebrow">Hakkında</p>

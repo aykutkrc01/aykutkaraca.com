@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import JsonLd from '@/components/JsonLd';
 import { createPageMetadata } from '@/lib/seo';
+import { breadcrumbJsonLd, webPageJsonLd } from '@/lib/structured-data';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Manifesto',
@@ -72,6 +74,22 @@ const PRINCIPLES = [
 export default function ManifestoPage() {
   return (
     <article className="container-page">
+      <JsonLd
+        id="manifesto-webpage-json-ld"
+        data={webPageJsonLd({
+          title: 'Manifesto',
+          description:
+            'Daha fazla yazılım değil, daha iyi yönetilen şirketler. Aykut Karaca’nın yönetim sistemi yaklaşımının ana tezi.',
+          path: '/manifesto',
+        })}
+      />
+      <JsonLd
+        id="manifesto-breadcrumb-json-ld"
+        data={breadcrumbJsonLd([
+          { name: 'Ana sayfa', path: '/' },
+          { name: 'Manifesto', path: '/manifesto' },
+        ])}
+      />
       <header className="py-[var(--space-4xl)] md:py-[110px]">
         <div className="brand-tile brand-tile-compact tile-ink rounded-[42px] p-[var(--space-xl)] md:p-[var(--space-3xl)]">
           <div className="max-w-[980px]">

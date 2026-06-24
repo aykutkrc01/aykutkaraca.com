@@ -1,8 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import JsonLd from '@/components/JsonLd';
 import { essays, getEssayBySlug } from '@/lib/essays';
 import { createPageMetadata } from '@/lib/seo';
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  webPageJsonLd,
+} from '@/lib/structured-data';
 
 type EssayPageProps = {
   params: Promise<{
@@ -43,6 +49,23 @@ export default async function EssayPage({ params }: EssayPageProps) {
 
   return (
     <article className="container-page">
+      <JsonLd
+        id="essay-webpage-json-ld"
+        data={webPageJsonLd({
+          title: essay.title,
+          description: essay.excerpt,
+          path: `/yazilar/${essay.slug}`,
+        })}
+      />
+      <JsonLd id="essay-article-json-ld" data={articleJsonLd(essay)} />
+      <JsonLd
+        id="essay-breadcrumb-json-ld"
+        data={breadcrumbJsonLd([
+          { name: 'Ana sayfa', path: '/' },
+          { name: 'Yazılar', path: '/yazilar' },
+          { name: essay.title, path: `/yazilar/${essay.slug}` },
+        ])}
+      />
       <header className="py-[var(--space-4xl)] md:py-[112px]">
         <Link
           href="/yazilar"

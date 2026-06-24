@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import JsonLd from '@/components/JsonLd';
 import { createPageMetadata } from '@/lib/seo';
+import { breadcrumbJsonLd, webPageJsonLd } from '@/lib/structured-data';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Doğru Yer Mi?',
@@ -74,6 +76,22 @@ const ROUTES = [
 export default function DogruYerMiPage() {
   return (
     <div className="container-page">
+      <JsonLd
+        id="dogru-yer-mi-webpage-json-ld"
+        data={webPageJsonLd({
+          title: 'Doğru Yer Mi?',
+          description:
+            'Aykutkaraca.com sana mı konuşuyor? KOBİ ve aile şirketleri için yönetim sistemi, karar ritmi, KPI ve dashboard sinyalleri.',
+          path: '/dogru-yer-mi',
+        })}
+      />
+      <JsonLd
+        id="dogru-yer-mi-breadcrumb-json-ld"
+        data={breadcrumbJsonLd([
+          { name: 'Ana sayfa', path: '/' },
+          { name: 'Doğru Yer Mi?', path: '/dogru-yer-mi' },
+        ])}
+      />
       <header className="py-[var(--space-4xl)] md:py-[112px]">
         <div className="max-w-[1080px]">
           <p className="eyebrow">Doğru Yer Mi?</p>

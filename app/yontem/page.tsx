@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import JsonLd from '@/components/JsonLd';
 import { createPageMetadata } from '@/lib/seo';
+import { breadcrumbJsonLd, webPageJsonLd } from '@/lib/structured-data';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Yöntem',
@@ -93,6 +95,22 @@ const DELIVERABLES = [
 export default function YontemPage() {
   return (
     <div className="container-page">
+      <JsonLd
+        id="yontem-webpage-json-ld"
+        data={webPageJsonLd({
+          title: 'Yöntem',
+          description:
+            'Aykut Karaca yöntemi: teşhis, KPI, süreç, rol, dashboard ve yönetim ritmi ile çalışan yönetim sistemi kurmak.',
+          path: '/yontem',
+        })}
+      />
+      <JsonLd
+        id="yontem-breadcrumb-json-ld"
+        data={breadcrumbJsonLd([
+          { name: 'Ana sayfa', path: '/' },
+          { name: 'Yöntem', path: '/yontem' },
+        ])}
+      />
       <header className="py-[var(--space-4xl)] md:py-[112px]">
         <div className="max-w-[1100px]">
           <p className="eyebrow">Yöntem</p>

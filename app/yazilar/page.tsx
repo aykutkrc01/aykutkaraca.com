@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import JsonLd from '@/components/JsonLd';
 import { essays } from '@/lib/essays';
 import { createPageMetadata } from '@/lib/seo';
+import { breadcrumbJsonLd, webPageJsonLd } from '@/lib/structured-data';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Yazılar',
@@ -13,6 +15,22 @@ export const metadata: Metadata = createPageMetadata({
 export default function YazilarPage() {
   return (
     <div className="container-page">
+      <JsonLd
+        id="yazilar-webpage-json-ld"
+        data={webPageJsonLd({
+          title: 'Yazılar',
+          description:
+            'KOBİ, aile şirketi, dashboard ve yönetim sistemi üzerine Aykut Karaca yazıları.',
+          path: '/yazilar',
+        })}
+      />
+      <JsonLd
+        id="yazilar-breadcrumb-json-ld"
+        data={breadcrumbJsonLd([
+          { name: 'Ana sayfa', path: '/' },
+          { name: 'Yazılar', path: '/yazilar' },
+        ])}
+      />
       <header className="py-[var(--space-4xl)] md:py-[112px]">
         <div className="max-w-[1040px]">
           <p className="eyebrow">Yazılar</p>
