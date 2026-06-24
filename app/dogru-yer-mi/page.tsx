@@ -65,7 +65,7 @@ const ROUTES = [
   {
     title: 'İş tarafına geç',
     text: 'Konu artık danışmanlık ve uygulamaysa Tomorrow Digital doğru adres.',
-    href: 'https://tomorrowdigital.co',
+    href: 'https://tomorrowdigital.com.tr',
     cta: 'Tomorrow Digital',
     external: true,
   },

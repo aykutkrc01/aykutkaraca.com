@@ -44,7 +44,7 @@ export default function DogruYerCTA() {
             Kendini test et
           </Link>
           <a
-            href="https://tomorrowdigital.co"
+            href="https://tomorrowdigital.com.tr"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex justify-center rounded-full bg-[rgba(255,255,255,0.10)] px-[var(--space-xl)] py-[14px] font-sans text-[15px] font-medium text-[var(--color-cream)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]"

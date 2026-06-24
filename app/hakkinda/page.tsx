@@ -41,7 +41,7 @@ const BRANDS = [
     title: 'Tomorrow Digital',
     kicker: 'Yönetim sistemi ve uygulama',
     text: 'KOBİ ve aile şirketleri için süreç, KPI, dashboard ve AI destekli teslimat katmanı.',
-    href: 'https://tomorrowdigital.co',
+    href: 'https://tomorrowdigital.com.tr',
     tone: 'tile-ink',
   },
   {

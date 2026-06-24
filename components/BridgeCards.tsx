@@ -12,7 +12,7 @@ const BRIDGES: Bridge[] = [
     title: 'Tomorrow Digital',
     kicker: 'Yönetim sistemi',
     text: 'KOBİ ve aile şirketleri için süreç, KPI, dashboard ve AI destekli teslimat katmanı.',
-    href: 'https://tomorrowdigital.co',
+    href: 'https://tomorrowdigital.com.tr',
     cta: 'Tomorrow Digital’a git',
     tone: 'tile-ink',
   },

@@ -8,7 +8,7 @@ type BrandLink = {
 
 const BRAND_LINKS: BrandLink[] = [
   {
-    href: 'https://tomorrowdigital.co',
+    href: 'https://tomorrowdigital.com.tr',
     label: 'Tomorrow Digital',
     hint: 'Danışmanlık',
   },
