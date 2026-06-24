@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Doğru Yer Mi?',
   description:
     'Aykutkaraca.com sana mı konuşuyor? KOBİ ve aile şirketleri için yönetim sistemi, karar ritmi, KPI ve dashboard sinyalleri.',
-};
+  path: '/dogru-yer-mi',
+});
 
 const SIGNALS = [
   {

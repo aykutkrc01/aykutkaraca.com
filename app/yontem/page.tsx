@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Yöntem',
   description:
     'Aykut Karaca yöntemi: teşhis, KPI, süreç, rol, dashboard ve yönetim ritmi ile çalışan yönetim sistemi kurmak.',
-};
+  path: '/yontem',
+});
 
 const METHOD_STEPS = [
   {

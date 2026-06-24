@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { essays, getEssayBySlug } from '@/lib/essays';
+import { createPageMetadata } from '@/lib/seo';
 
 type EssayPageProps = {
   params: Promise<{
@@ -23,13 +24,13 @@ export async function generateMetadata({ params }: EssayPageProps): Promise<Meta
     return {};
   }
 
-  return {
+  return createPageMetadata({
     title: essay.title,
     description: essay.excerpt,
-    alternates: {
-      canonical: `/yazilar/${essay.slug}`,
-    },
-  };
+    path: `/yazilar/${essay.slug}`,
+    type: 'article',
+    publishedTime: essay.date,
+  });
 }
 
 export default async function EssayPage({ params }: EssayPageProps) {

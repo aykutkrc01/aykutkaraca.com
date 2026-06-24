@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Hakkında',
   description:
     'Aykut Karaca hakkında: KOBİ ve aile şirketleri için karar, KPI, süreç, rol, dashboard ve yönetim ritmi kuran stratejik operatör.',
-};
+  path: '/hakkinda',
+});
 
 const FOCUS_AREAS = [
   {

@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { essays } from '@/lib/essays';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Yazılar',
   description:
     'KOBİ, aile şirketi, dashboard ve yönetim sistemi üzerine Aykut Karaca yazıları.',
-};
+  path: '/yazilar',
+});
 
 export default function YazilarPage() {
   return (

@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Manifesto',
   description:
     'Daha fazla yazılım değil, daha iyi yönetilen şirketler. Aykut Karaca’nın yönetim sistemi yaklaşımının ana tezi.',
-};
+  path: '/manifesto',
+});
 
 const THESIS_CARDS = [
   {
