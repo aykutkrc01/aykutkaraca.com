@@ -80,7 +80,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
               <span className="mini-pill">{essay.category}</span>
               <span className="mini-pill">{essay.readingTime}</span>
             </div>
-            <h1 className="mt-[var(--space-2xl)] max-w-[1040px] font-sans text-[50px] font-medium leading-[1.02] tracking-[-0.02em] md:text-[92px]">
+            <h1 className="mt-[var(--space-2xl)] max-w-[1040px] font-sans text-[50px] font-medium leading-[1.02] tracking-[0] md:text-[92px]">
               {essay.title}
             </h1>
             <p className="mt-[var(--space-2xl)] max-w-[780px] font-sans text-[20px] leading-[1.58] text-[var(--color-warm-gray)] md:text-[24px]">

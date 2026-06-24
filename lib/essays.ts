@@ -2,7 +2,13 @@ export type Essay = {
   slug: string;
   title: string;
   excerpt: string;
-  category: 'Yönetim Sistemi' | 'Dashboard' | 'Aile Şirketi';
+  category:
+    | 'Yönetim Sistemi'
+    | 'Dashboard'
+    | 'Aile Şirketi'
+    | 'Dijital Dönüşüm'
+    | 'Operasyon'
+    | 'Liderlik';
   date: string;
   readingTime: string;
   tone: 'tile-mist' | 'tile-peach' | 'tile-rose';
@@ -14,6 +20,111 @@ export type Essay = {
 };
 
 export const essays: Essay[] = [
+  {
+    slug: 'kobi-dijital-donusum-neden-basarisiz-olur',
+    title: 'KOBİ’lerde dijital dönüşüm neden başarısız olur?',
+    excerpt:
+      'Dijital dönüşüm çoğu zaman teknoloji seçimiyle değil; problem tanımı, sahiplik ve yönetim ritmi eksikliğiyle aksar.',
+    category: 'Dijital Dönüşüm',
+    date: '2026-06-24',
+    readingTime: '6 dk',
+    tone: 'tile-peach',
+    thesis:
+      'Dijital dönüşüm, yazılım projesi olarak değil yönetim sistemi projesi olarak ele alındığında kalıcı sonuç üretir.',
+    sections: [
+      {
+        title: 'Başarısızlık genellikle araçtan önce başlar.',
+        paragraphs: [
+          'KOBİ’lerde dijital dönüşüm konuşması çoğu zaman “hangi yazılımı alalım?” sorusuyla açılır. Oysa başarısızlık riski, araç seçilmeden çok önce oluşur.',
+          'Şirket hangi kararı daha iyi almak istediğini, hangi süreci görünür kılacağını ve hangi davranışı değiştireceğini tanımlamadıysa yazılım yalnızca yeni bir kayıt alanı olur.',
+        ],
+      },
+      {
+        title: 'Sahiplik net değilse sistem çalışmaz.',
+        paragraphs: [
+          'Her dijital dönüşüm projesinin bir iş sahibi olmalıdır. Bu kişi yazılımı değil, değişmesi gereken iş sonucunu sahiplenir.',
+          'Satış hunisi, üretim planı, stok doğruluğu ya da müşteri takibi fark etmez. Sahiplik belirsizse veri girilir ama karar değişmez.',
+        ],
+      },
+      {
+        title: 'Teknoloji yönetim ritmine bağlanmalıdır.',
+        paragraphs: [
+          'Dijitalleşen her süreç haftalık, aylık ya da çeyreklik bir yönetim ritmine bağlanmalıdır. Aksi halde sistem açılır, veri birikir, ama şirket aynı şekilde yönetilmeye devam eder.',
+          'Başarılı dönüşümün ölçüsü kullanılan modül sayısı değil; daha hızlı, daha net ve daha sorumlu karar alınmasıdır.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'patron-sirketinden-sistemli-sirkete-gecis',
+    title: 'Patron şirketinden sistemli şirkete geçiş',
+    excerpt:
+      'Kurucunun her detayı taşıdığı yapıdan, kararların rol ve ritim üzerinden aktığı şirkete geçiş bilinçli tasarım ister.',
+    category: 'Liderlik',
+    date: '2026-06-24',
+    readingTime: '5 dk',
+    tone: 'tile-rose',
+    thesis:
+      'Sistemli şirket, kurucuyu devreden çıkaran değil; kurucunun bilgisini tekrar edilebilir yönetime çeviren şirkettir.',
+    sections: [
+      {
+        title: 'Patron şirketi kötü bir başlangıç değildir.',
+        paragraphs: [
+          'Birçok şirket ilk döneminde kurucunun hızı, sezgisi ve kişisel takibiyle büyür. Bu doğal ve çoğu zaman gerekli bir aşamadır.',
+          'Sorun, şirket büyüdükçe aynı çalışma biçiminin sürdürülmesidir. Her karar kurucuya geri dönüyorsa büyüme bir süre sonra yönetim yüküne çarpar.',
+        ],
+      },
+      {
+        title: 'Geçiş rol netliğiyle başlar.',
+        paragraphs: [
+          'Sistemli şirkete geçiş için önce kimin hangi kararı alacağı yazılmalıdır. Rol tanımı yalnızca görev listesi değil, karar hakkı ve sonuç sahipliği tarifidir.',
+          'Bu netlik olmadan delege edilen iş geri döner; çünkü ekip kararın sınırını, verisini ve beklenen çıktısını bilemez.',
+        ],
+      },
+      {
+        title: 'Ritim kurucunun zihnini şirkete yayar.',
+        paragraphs: [
+          'Haftalık toplantılar, KPI gözden geçirmeleri ve aksiyon takibi kurucunun zihnindeki öncelikleri ortak dile çevirir.',
+          'Amaç kurucu refleksini kaybetmek değil, bu refleksi ekibin anlayacağı ve sürdüreceği bir yönetim sistemine dönüştürmektir.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'yazilim-almadan-once-sorulmasi-gereken-10-soru',
+    title: 'Yazılım almadan önce sorulması gereken 10 soru',
+    excerpt:
+      'Doğru yazılım seçimi, ihtiyaç listesiyle değil; karar, süreç, sahiplik ve başarı ölçüsünü netleştiren sorularla başlar.',
+    category: 'Operasyon',
+    date: '2026-06-24',
+    readingTime: '7 dk',
+    tone: 'tile-mist',
+    thesis:
+      'Yazılım almadan önce cevaplanması gereken soru araç değil, kurulacak yönetim davranışıdır.',
+    sections: [
+      {
+        title: 'İhtiyaç listesi tek başına yeterli değildir.',
+        paragraphs: [
+          'Şirketler yazılım ararken çoğu zaman özellik listesi çıkarır. CRM’de şu olsun, ERP’de bu olsun, dashboard’da şu grafik görünsün.',
+          'Özellik listesi gereklidir ama yeterli değildir. Asıl mesele, yazılımın hangi kararı hızlandıracağı ve hangi davranışı standart hale getireceğidir.',
+        ],
+      },
+      {
+        title: 'İlk sorular yönetimle ilgilidir.',
+        paragraphs: [
+          'Bu yazılım hangi problemi çözecek? Problemin sahibi kim? Bugün karar hangi veriyle alınıyor? Sürecin başlangıcı ve bitişi neresi? Başarıyı hangi KPI gösterecek?',
+          'Bu sorular net değilse demo çok etkileyici olsa bile proje risklidir. Çünkü araç, belirsiz bir iş davranışının üzerine kurulacaktır.',
+        ],
+      },
+      {
+        title: 'Doğru cevap uygulama maliyetini düşürür.',
+        paragraphs: [
+          'Sorular önceden cevaplandığında yazılım seçimi sadeleşir. Gereksiz modüller elenir, entegrasyon ihtiyacı netleşir, eğitim ve adaptasyon daha gerçekçi planlanır.',
+          'Doğru yazılım, doğru hazırlanmış şirkette kaldıraç etkisi yaratır. Hazırlık yoksa en iyi araç bile beklenen dönüşümü taşıyamaz.',
+        ],
+      },
+    ],
+  },
   {
     slug: 'kobinin-sorunu-yazilim-eksikligi-degildir',
     title: 'KOBİ’nin sorunu neden yazılım eksikliği değildir?',

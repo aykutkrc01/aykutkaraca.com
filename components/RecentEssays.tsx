@@ -6,9 +6,9 @@ export default function RecentEssays() {
     <section className="surface-raised rounded-[38px] p-[var(--space-xl)] md:p-[var(--space-3xl)]">
       <div className="flex flex-col gap-[var(--space-md)] md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="eyebrow">İlk yazılar</p>
+          <p className="eyebrow">İlk yazı stratejisi</p>
           <h2 className="mt-[var(--space-lg)] max-w-[520px] font-sans text-[32px] font-medium leading-[1.05] md:text-[44px]">
-            Düşünceyi yazıya, yazıyı sisteme bağlayan notlar.
+            Temel tezden pratik yönetim modeline uzanan ilk seri.
           </h2>
         </div>
         <Link

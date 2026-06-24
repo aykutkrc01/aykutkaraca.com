@@ -11,9 +11,9 @@ export default function ManifestHero() {
           Daha fazla yazılım değil. Daha iyi yönetilen şirketler.
         </h1>
         <p className="mt-[var(--space-2xl)] max-w-[680px] font-sans text-[21px] leading-[1.45] text-[var(--color-warm-gray)] md:text-[24px]">
-          Aykut Karaca; Türk KOBİ ve aile şirketleri için karar, rol, KPI,
-          süreç ve yönetim ritmi kuran stratejik operatördür. Yazılım araç,
-          yönetim sistemi amaçtır.
+          Türk KOBİ’leri, aile şirketleri ve büyüyen ekipler için yönetim
+          sistemi, dijital dönüşüm ve operasyonel netlik üzerine bir düşünce
+          merkezi. Yazılım araçtır; amaç daha iyi yönetilen şirkettir.
         </p>
         <div className="mt-[var(--space-2xl)] flex flex-col gap-[var(--space-md)] sm:flex-row">
           <Link

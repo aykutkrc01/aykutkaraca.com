@@ -1,5 +1,6 @@
 import AboutPreview from '@/components/AboutPreview';
 import BridgeCards from '@/components/BridgeCards';
+import ContentPillars from '@/components/ContentPillars';
 import DogruYerCTA from '@/components/DogruYerCTA';
 import JsonLd from '@/components/JsonLd';
 import ManifestHero from '@/components/ManifestHero';
@@ -22,6 +23,7 @@ export default function HomePage() {
         })}
       />
       <ManifestHero />
+      <ContentPillars />
       <ProblemBlock />
       <YontemPreview />
       <div className="grid gap-[var(--space-xl)] py-[96px] md:grid-cols-2">

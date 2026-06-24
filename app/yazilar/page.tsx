@@ -8,9 +8,18 @@ import { breadcrumbJsonLd, webPageJsonLd } from '@/lib/structured-data';
 export const metadata: Metadata = createPageMetadata({
   title: 'Yazılar',
   description:
-    'KOBİ, aile şirketi, dashboard ve yönetim sistemi üzerine Aykut Karaca yazıları.',
+    'KOBİ yönetim sistemi, dijital dönüşüm, aile şirketi, operasyon ve liderlik üzerine Aykut Karaca yazıları.',
   path: '/yazilar',
 });
+
+const TOPICS = [
+  'Yönetim sistemi',
+  'Dijital dönüşüm',
+  'Aile şirketi',
+  'Operasyon',
+  'Liderlik',
+  'Dashboard',
+];
 
 export default function YazilarPage() {
   return (
@@ -20,7 +29,7 @@ export default function YazilarPage() {
         data={webPageJsonLd({
           title: 'Yazılar',
           description:
-            'KOBİ, aile şirketi, dashboard ve yönetim sistemi üzerine Aykut Karaca yazıları.',
+            'KOBİ yönetim sistemi, dijital dönüşüm, aile şirketi, operasyon ve liderlik üzerine Aykut Karaca yazıları.',
           path: '/yazilar',
         })}
       />
@@ -34,15 +43,42 @@ export default function YazilarPage() {
       <header className="py-[var(--space-4xl)] md:py-[112px]">
         <div className="max-w-[1040px]">
           <p className="eyebrow">Yazılar</p>
-          <h1 className="mt-[var(--space-lg)] font-sans text-[58px] font-medium leading-[1.02] tracking-[-0.02em] md:text-[112px]">
+          <h1 className="mt-[var(--space-lg)] font-sans text-[58px] font-medium leading-[1.02] tracking-[0] md:text-[112px]">
             Daha az gürültü. Daha net yönetim düşüncesi.
           </h1>
           <p className="mt-[var(--space-2xl)] max-w-[760px] font-sans text-[20px] leading-[1.6] text-[var(--color-warm-gray)] md:text-[24px]">
-            KOBİ ve aile şirketlerinde karar, rol, KPI, süreç, dashboard ve
-            yönetim ritmi üzerine notlar. Vaka değil, tekrar eden örüntü.
+            KOBİ ve aile şirketlerinde karar, rol, KPI, süreç, dashboard,
+            dijital dönüşüm ve yönetim ritmi üzerine notlar. Vaka değil,
+            tekrar eden yönetim deseni.
           </p>
         </div>
       </header>
+
+      <section className="surface-muted mb-[var(--space-3xl)] rounded-[36px] p-[var(--space-xl)] md:p-[var(--space-2xl)]">
+        <div className="grid gap-[var(--space-xl)] md:grid-cols-[0.85fr_1.15fr] md:items-end">
+          <div>
+            <p className="eyebrow">SEO içerik planı</p>
+            <h2 className="mt-[var(--space-lg)] max-w-[560px] font-sans text-[34px] font-medium leading-[1.08] md:text-[52px]">
+              İlk seri temel kavramları sahiplenir.
+            </h2>
+          </div>
+          <div>
+            <p className="max-w-[640px] font-sans text-[17px] leading-[1.62] text-[var(--color-warm-gray)]">
+              Bu arşiv, “yazılım alalım mı?” sorusundan önce şirketin nasıl
+              yönetildiğini konuşan bir kaynak olarak büyür. Her başlık Google’a
+              da aynı sinyali verir: burası yönetim sistemi ve dijital dönüşüm
+              üzerine uzmanlık alanıdır.
+            </p>
+            <div className="mt-[var(--space-lg)] flex flex-wrap gap-[var(--space-sm)]">
+              {TOPICS.map((topic) => (
+                <span key={topic} className="tile-cta">
+                  {topic}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="grid gap-[var(--space-xl)] pb-[var(--space-4xl)] md:grid-cols-3">
         {essays.map((essay, index) => (

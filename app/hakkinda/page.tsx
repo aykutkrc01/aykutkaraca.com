@@ -84,7 +84,7 @@ export default function HakkindaPage() {
       <header className="grid gap-[var(--space-4xl)] py-[var(--space-4xl)] md:min-h-[760px] md:grid-cols-[1.05fr_0.95fr] md:items-center md:py-[96px]">
         <div>
           <p className="eyebrow">Hakkında</p>
-          <h1 className="mt-[var(--space-lg)] max-w-[920px] font-sans text-[58px] font-medium leading-[1.02] tracking-[-0.02em] md:text-[112px]">
+          <h1 className="mt-[var(--space-lg)] max-w-[920px] font-sans text-[58px] font-medium leading-[1.02] tracking-[0] md:text-[112px]">
             Sahada çalışan sistem kuran kişi.
           </h1>
           <p className="mt-[var(--space-2xl)] max-w-[760px] font-sans text-[20px] leading-[1.6] text-[var(--color-warm-gray)] md:text-[24px]">

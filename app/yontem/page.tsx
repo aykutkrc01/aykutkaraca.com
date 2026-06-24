@@ -114,7 +114,7 @@ export default function YontemPage() {
       <header className="py-[var(--space-4xl)] md:py-[112px]">
         <div className="max-w-[1100px]">
           <p className="eyebrow">Yöntem</p>
-          <h1 className="mt-[var(--space-lg)] font-sans text-[58px] font-medium leading-[1.02] tracking-[-0.02em] md:text-[118px]">
+          <h1 className="mt-[var(--space-lg)] font-sans text-[58px] font-medium leading-[1.02] tracking-[0] md:text-[118px]">
             Rapor değil. Çalışan sistem.
           </h1>
           <p className="mt-[var(--space-2xl)] max-w-[780px] font-sans text-[20px] leading-[1.6] text-[var(--color-warm-gray)] md:text-[24px]">
