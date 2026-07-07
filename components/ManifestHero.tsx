@@ -6,9 +6,9 @@ export default function ManifestHero() {
     <section className="relative grid items-center gap-[var(--space-4xl)] py-[var(--space-4xl)] md:min-h-[720px] md:grid-cols-[1.34fr_0.66fr] md:py-[80px]">
       <div className="pointer-events-none absolute left-[-12%] top-[14%] h-[360px] w-[360px] rounded-full bg-[var(--color-surface)] opacity-80 blur-3xl" />
       <div className="relative">
-        <p className="eyebrow">Stratejik Düşünce Merkezi</p>
-        <h1 className="mt-[var(--space-lg)] max-w-[920px] text-hero">
-          Daha fazla yazılım değil. Daha iyi yönetilen şirketler.
+        <h1 className="max-w-[920px] text-hero">
+          Daha fazla yazılım değil. Şirkete uygun en doğru teknoloji ve iyi
+          yönetilen şirketler.
         </h1>
         <p className="mt-[var(--space-2xl)] max-w-[680px] font-sans text-[21px] leading-[1.45] text-[var(--color-warm-gray)] md:text-[24px]">
           Türk KOBİ’leri, aile şirketleri ve büyüyen ekipler için yönetim
@@ -45,11 +45,52 @@ export default function ManifestHero() {
             />
           </div>
         </div>
-        <div className="relative mt-[var(--space-md)] flex flex-wrap gap-[var(--space-sm)]">
-          <span className="mini-pill">Karar</span>
-          <span className="mini-pill">KPI</span>
-          <span className="mini-pill">Süreç</span>
-          <span className="mini-pill">Ritim</span>
+        <div className="relative mt-[var(--space-lg)] grid grid-cols-2 gap-[var(--space-xl)] rounded-[24px] border border-[rgba(11,11,11,0.07)] bg-[rgba(255,255,255,0.6)] p-[var(--space-lg)] shadow-[var(--shadow-soft)] backdrop-blur-xl">
+          <div>
+            <p className="eyebrow text-[11px] text-[var(--color-warm-gray)]">
+              Uzmanlık
+            </p>
+            <ul className="mt-[var(--space-sm)] flex flex-col gap-[7px]">
+              {[
+                '+20 yıl İnsan Kaynakları deneyimi',
+                'Yönetim ve organizasyon uzmanlığı',
+                'Aile şirketleri yönetimi',
+                'Kuşak yönetimi',
+                'AI & BI teknolojileri uzmanlığı',
+                'Microsoft partnerliği',
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-[8px] font-sans text-[12.5px] leading-[1.4] text-[var(--color-charcoal)]"
+                >
+                  <span className="mt-[6px] h-[4px] w-[4px] shrink-0 rounded-full bg-[var(--color-cat-terra)]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="border-l border-[var(--color-border)] pl-[var(--space-xl)]">
+            <p className="eyebrow text-[11px] text-[var(--color-warm-gray)]">
+              Eğitim
+            </p>
+            <ul className="mt-[var(--space-sm)] flex flex-col gap-[7px]">
+              {[
+                'İşletme Fakültesi',
+                'Yönetim ve organizasyon yüksek lisans',
+                'Koç Üniversitesi MBA programı',
+                'ICF bireysel koçluk',
+                'ICF takım koçluğu',
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-[8px] font-sans text-[12.5px] leading-[1.4] text-[var(--color-charcoal)]"
+                >
+                  <span className="mt-[6px] h-[4px] w-[4px] shrink-0 rounded-full bg-[var(--color-cat-ink)]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </figure>
     </section>

@@ -33,7 +33,7 @@ const config: Config = {
         'essay-title': ['24px', { lineHeight: '1.22', letterSpacing: '0', fontWeight: '500' }],
         section: ['clamp(36px, 4vw, 64px)', { lineHeight: '1.02', letterSpacing: '0', fontWeight: '500' }],
         page: ['clamp(48px, 5vw, 80px)', { lineHeight: '1.02', letterSpacing: '0', fontWeight: '500' }],
-        hero: ['clamp(52px, 6vw, 88px)', { lineHeight: '1.02', letterSpacing: '0', fontWeight: '500' }],
+        hero: ['clamp(44px, 4.8vw, 72px)', { lineHeight: '1.05', letterSpacing: '0', fontWeight: '500' }],
       },
       spacing: {
         xs: 'var(--space-xs)',
