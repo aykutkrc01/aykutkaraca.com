@@ -3,6 +3,11 @@ import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
 import { createPageMetadata } from '@/lib/seo';
 import { breadcrumbJsonLd, webPageJsonLd } from '@/lib/structured-data';
+import {
+  DashboardMockupVisual,
+  SoftwareMockupVisual,
+  SystemMockupVisual,
+} from '@/components/ThesisVisuals';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Manifesto',
@@ -17,18 +22,21 @@ const THESIS_CARDS = [
     title: 'Yazılım araçtır.',
     text: 'Araç, yanlış yönetim davranışını tek başına düzeltmez. Önce karar dili netleşir.',
     tone: 'problem-white',
+    Visual: SoftwareMockupVisual,
   },
   {
     label: '02',
     title: 'Sistem amaçtır.',
     text: 'Rol, KPI, süreç ve ritim aynı hatta bağlanmadıkça şirket ortak akıl üretemez.',
     tone: 'problem-mist',
+    Visual: SystemMockupVisual,
   },
   {
     label: '03',
     title: 'Dashboard sonuçtur.',
     text: 'Dashboard bir ekran değil, şirketin nasıl karar aldığının görünür hale gelmiş sonucudur.',
     tone: 'problem-apricot',
+    Visual: DashboardMockupVisual,
   },
 ];
 
@@ -122,12 +130,21 @@ export default function ManifestoPage() {
         </div>
       </header>
 
-      <section className="grid gap-[var(--space-lg)] py-[var(--space-2xl)] md:grid-cols-3">
+      <section className="grid gap-[var(--space-lg)] py-[var(--space-2xl)] md:grid-cols-3 md:pt-[240px]">
         {THESIS_CARDS.map((card) => (
           <div
             key={card.title}
-            className={`${card.tone} surface-raised rounded-[30px] p-[var(--space-xl)] md:min-h-[320px] md:p-[var(--space-2xl)]`}
+            className={`${card.tone} surface-raised group relative rounded-[30px] p-[var(--space-xl)] transition-transform duration-300 md:min-h-[320px] md:p-[var(--space-2xl)] md:hover:-translate-y-1`}
           >
+            <div
+              className="pointer-events-none absolute inset-x-[var(--space-xl)] bottom-[calc(100%+var(--space-md))] z-20 hidden translate-y-2 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 md:block"
+              aria-hidden="true"
+            >
+              <div className="mx-auto aspect-[17/11] w-full max-w-[320px] overflow-hidden rounded-[18px] border border-[rgba(11,11,11,0.08)] bg-[var(--color-cream)] shadow-[0_30px_70px_rgba(0,0,0,0.22)]">
+                <card.Visual />
+              </div>
+            </div>
+
             <p className="font-sans text-[13px] font-medium text-[var(--color-warm-gray)]">
               {card.label}
             </p>
