@@ -1,10 +1,5 @@
 import Link from 'next/link';
 
-const EXTERNAL_LINKS = [
-  { href: 'https://tomorrowhr.com', label: 'tomorrowhr.com' },
-  { href: 'https://www.linkedin.com/in/aykutkaraca/', label: 'LinkedIn' },
-];
-
 export default function Header() {
   return (
     <header className="site-header">
@@ -22,23 +17,6 @@ export default function Header() {
             Stratejik Düşünce Merkezi
           </span>
         </Link>
-
-        <nav
-          aria-label="Birincil navigasyon"
-          className="flex items-center gap-[var(--space-lg)] md:gap-[var(--space-xl)]"
-        >
-          {EXTERNAL_LINKS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-sans text-[14px] text-[var(--color-warm-gray)] hover:text-[var(--color-charcoal)] md:text-[15px]"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
       </div>
     </header>
   );
