@@ -130,12 +130,9 @@ export default function ChaosHero() {
     const ctx = canvas?.getContext('2d');
     if (!stage || !canvas || !ctx) return;
 
-    /* motion=1 test amaçlı override; hold=1 sahneyi ürün halinde sabitler */
-    const search = window.location.search;
-    const reduced =
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
-      !/[?&]motion=1/.test(search);
-    const hold = /[?&]hold=1/.test(search);
+    /* hold=1 test amaçlı: sahneyi ürün halinde sabitler.
+       Animasyon her cihazda sürekli çalışır (bilinçli tercih). */
+    const hold = /[?&]hold=1/.test(window.location.search);
 
     const DPR = Math.min(window.devicePixelRatio || 1, 2);
     let W = 0;
@@ -335,12 +332,10 @@ export default function ChaosHero() {
       const r = canvas!.getBoundingClientRect();
       mouse.x = ev.clientX - r.left;
       mouse.y = ev.clientY - r.top;
-      if (reduced) render(0.85, 0);
     };
     const onPointerLeave = () => {
       mouse.x = -9999;
       mouse.y = -9999;
-      if (reduced) render(0.85, 0);
     };
 
     canvas.addEventListener('pointermove', onPointerMove);
@@ -348,21 +343,18 @@ export default function ChaosHero() {
 
     const ro = new ResizeObserver(() => {
       resize();
-      if (reduced) render(hold ? 1 : 0.85, 0);
     });
     ro.observe(stage);
 
     /* Sahne görünür değilken hiç çizme */
     const io = new IntersectionObserver(([entry]) => {
-      if (reduced) return;
       if (entry.isIntersecting) start();
       else stop();
     });
     io.observe(stage);
 
     resize();
-    if (reduced) render(hold ? 1 : 0.85, 0);
-    else start();
+    start();
 
     return () => {
       stop();
