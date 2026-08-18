@@ -1,10 +1,4 @@
-import type { Essay } from '@/lib/essays';
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/lib/site';
-
-type BreadcrumbItem = {
-  name: string;
-  path: string;
-};
 
 const personId = `${SITE_URL}/#person`;
 const websiteId = `${SITE_URL}/#website`;
@@ -93,45 +87,5 @@ export function webPageJsonLd({
     about: {
       '@id': personId,
     },
-  };
-}
-
-export function breadcrumbJsonLd(items: BreadcrumbItem[]) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: item.name,
-      item: absoluteUrl(item.path),
-    })),
-  };
-}
-
-export function articleJsonLd(essay: Essay) {
-  const url = absoluteUrl(`/yazilar/${essay.slug}`);
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    '@id': `${url}#article`,
-    url,
-    headline: essay.title,
-    description: essay.excerpt,
-    datePublished: essay.date,
-    dateModified: essay.date,
-    inLanguage: 'tr-TR',
-    image: absoluteUrl('/opengraph-image'),
-    author: {
-      '@id': personId,
-    },
-    publisher: {
-      '@id': organizationId,
-    },
-    mainEntityOfPage: {
-      '@id': `${url}#webpage`,
-    },
-    articleSection: essay.category,
   };
 }

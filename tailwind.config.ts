@@ -17,23 +17,9 @@ const config: Config = {
         'light-gray': 'var(--color-light-gray)',
         border: 'var(--color-border)',
         ink: 'var(--color-ink)',
-        'cat-ink': 'var(--color-cat-ink)',
-        'cat-terra': 'var(--color-cat-terra)',
-        'cat-sage': 'var(--color-cat-sage)',
-        'cat-marigold': 'var(--color-cat-marigold)',
       },
       fontFamily: {
-        serif: ['var(--font-serif)', 'Source Serif 4', 'Georgia', 'serif'],
         sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
-      },
-      fontSize: {
-        eyebrow: ['13px', { lineHeight: '1.35', letterSpacing: '0', fontWeight: '500' }],
-        body: ['16px', { lineHeight: '1.65', fontWeight: '400' }],
-        deck: ['16px', { lineHeight: '1.55', fontWeight: '400' }],
-        'essay-title': ['24px', { lineHeight: '1.22', letterSpacing: '0', fontWeight: '500' }],
-        section: ['clamp(36px, 4vw, 64px)', { lineHeight: '1.02', letterSpacing: '0', fontWeight: '500' }],
-        page: ['clamp(48px, 5vw, 80px)', { lineHeight: '1.02', letterSpacing: '0', fontWeight: '500' }],
-        hero: ['clamp(44px, 4.8vw, 72px)', { lineHeight: '1.05', letterSpacing: '0', fontWeight: '500' }],
       },
       spacing: {
         xs: 'var(--space-xs)',

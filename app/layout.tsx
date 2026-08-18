@@ -1,18 +1,10 @@
 import type { Metadata } from 'next';
-import { Source_Serif_4, Inter } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/lib/site';
 import { siteJsonLd } from '@/lib/structured-data';
 import './globals.css';
-
-const sourceSerif = Source_Serif_4({
-  subsets: ['latin', 'latin-ext'],
-  weight: ['300', '400', '500', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-serif',
-  display: 'swap',
-});
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext'],
@@ -54,9 +46,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE_URL,
-    types: {
-      'application/rss+xml': `${SITE_URL}/rss.xml`,
-    },
   },
   robots: {
     index: true,
@@ -70,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr" className={`${sourceSerif.variable} ${inter.variable}`}>
+    <html lang="tr" className={inter.variable}>
       <body className="min-h-screen flex flex-col bg-cream text-charcoal antialiased">
         <JsonLd id="site-json-ld" data={siteJsonLd()} />
         <main id="main" className="flex-1">
