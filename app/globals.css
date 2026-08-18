@@ -29,6 +29,13 @@
   --color-cat-sage:     #6E8055; /* Kütüphane */
   --color-cat-marigold: #B8861E; /* Yolda */
 
+  /* tomorrowHR marka aksanı ve iletişim renkleri (ChaosHero + WhatsApp FAB) */
+  --color-teal:         #0E9E90;
+  --color-teal-deep:    #0B7D72;
+  --color-teal-soft:    rgba(14, 158, 144, 0.08);
+  --color-wa:           #1FA855;
+  --color-wa-brand:     #25D366;
+
   /* Boşluk ölçeği */
   --space-xs:  4px;
   --space-sm:  8px;
@@ -310,6 +317,96 @@ img, picture, video, canvas, svg {
 @media (max-width: 767px) {
   .brand-tile {
     min-height: 310px;
+  }
+}
+
+/* ============================================================
+   ChaosHero — sahneye özel sınıflar
+   ============================================================ */
+/* Yetkinlik çipi: kaosta süzülür, sistem kurulunca raya oturur.
+   Konum ve opaklık her karede JS tarafından yazılır. */
+.chaos-chip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(11, 11, 11, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--color-warm-gray);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(11, 11, 11, 0.07);
+  will-change: transform;
+  opacity: 0;
+}
+
+.chaos-chip[data-docked='true'] {
+  color: var(--color-charcoal);
+  border-color: rgba(14, 158, 144, 0.3);
+  box-shadow: 0 6px 20px rgba(11, 11, 11, 0.09);
+}
+
+/* Portre: renksiz, kenarsız, sayfanın dokusuna gömülü */
+.chaos-portrait {
+  height: auto;
+  filter: grayscale(1) brightness(1.16) contrast(1.06);
+  mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(ellipse 74% 86% at 52% 56%, #000 36%, rgba(0, 0, 0, 0.65) 58%, transparent 80%);
+  mask-image: radial-gradient(ellipse 74% 86% at 52% 56%, #000 36%, rgba(0, 0, 0, 0.65) 58%, transparent 80%);
+}
+
+/* Maske desteklenmese bile kenarları zemine eriten garanti katman */
+.chaos-portrait-fade {
+  background:
+    linear-gradient(to top, var(--color-cream) 0%, rgba(255, 255, 255, 0) 16%),
+    radial-gradient(
+      ellipse 72% 84% at 52% 50%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.6) 58%,
+      var(--color-cream) 74%
+    );
+}
+
+/* WhatsApp sabit iletişim balonu */
+.wa-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 60;
+  display: flex;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--color-wa-brand);
+  color: #ffffff;
+  box-shadow: 0 10px 26px rgba(31, 168, 85, 0.38);
+}
+
+.wa-fab:hover {
+  opacity: 1;
+  transform: scale(1.07);
+  box-shadow: 0 14px 32px rgba(31, 168, 85, 0.45);
+}
+
+@media (max-width: 767px) {
+  .wa-fab {
+    width: 52px;
+    height: 52px;
+    right: 16px;
+    bottom: 16px;
   }
 }
 

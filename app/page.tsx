@@ -1,12 +1,13 @@
 import AboutPreview from '@/components/AboutPreview';
 import BridgeCards from '@/components/BridgeCards';
+import ChaosHero from '@/components/ChaosHero';
 import ContentPillars from '@/components/ContentPillars';
 import DogruYerCTA from '@/components/DogruYerCTA';
 import JsonLd from '@/components/JsonLd';
-import ManifestHero from '@/components/ManifestHero';
 import ProblemBlock from '@/components/ProblemBlock';
 import RecentEssays from '@/components/RecentEssays';
 import SahaPreview from '@/components/SahaPreview';
+import WhatsAppFab from '@/components/WhatsAppFab';
 import YontemPreview from '@/components/YontemPreview';
 import { SITE_NAME, SITE_TAGLINE } from '@/lib/site';
 import { webPageJsonLd } from '@/lib/structured-data';
@@ -22,7 +23,7 @@ export default function HomePage() {
           path: '/',
         })}
       />
-      <ManifestHero />
+      <ChaosHero />
       <ContentPillars />
       <ProblemBlock />
       <YontemPreview />
@@ -33,6 +34,7 @@ export default function HomePage() {
       <AboutPreview />
       <BridgeCards />
       <DogruYerCTA />
+      <WhatsAppFab />
     </div>
   );
 }
