@@ -358,21 +358,21 @@ export default function ChaosHero() {
   }, []);
 
   return (
-    <section className="grid items-center gap-[var(--space-lg)] py-[var(--space-xl)] md:min-h-[640px] md:grid-cols-[minmax(360px,44%)_1fr] md:gap-[var(--space-xl)] md:py-[var(--space-2xl)]">
+    <section className="grid items-center gap-[var(--space-lg)] pb-[var(--space-xl)] pt-[var(--space-2xl)] md:min-h-[92vh] md:grid-cols-[minmax(360px,44%)_1fr] md:gap-[var(--space-xl)] md:pb-[var(--space-2xl)] md:pt-[var(--space-3xl)]">
       <div className="max-w-[480px]">
         <p className="font-mono text-[11.5px] uppercase tracking-[0.16em] text-[var(--color-teal)]">
-          Ürünleştirilmiş Danışmanlık
+          Organizasyonel Ürünleştirilmiş Danışmanlık
         </p>
         <h1 className="mt-[var(--space-lg)] text-[clamp(34px,4.6vw,52px)] font-semibold leading-[1.06] tracking-[-0.028em] [text-wrap:balance]">
-          Karmaşık organizasyonları çözüyorum.
+          Karmaşadan, çalışan akıllı sistemlere.
         </h1>
         <p className="mt-[var(--space-lg)] max-w-[42ch] font-sans text-[17.5px] leading-[1.6] text-[var(--color-warm-gray)]">
-          Danışmanlıkla başlar: yapıyı okur, sistemi kurarım. İhtiyaç netleşince
-          aynı know-how,{' '}
+          Büyüyen her organizasyonda karmaşa birikir. Doğru okunduğunda karmaşa
+          yapıya, yapı sisteme; sistem de{' '}
           <strong className="font-semibold text-[var(--color-thr-navy)]">
             TomorrowHR
           </strong>{' '}
-          ile AI destekli ürüne dönüşür.
+          ile AI destekli ürünlere dönüşür.
         </p>
 
         <div className="mt-[var(--space-2xl)] flex max-w-[420px] flex-col gap-[10px]">

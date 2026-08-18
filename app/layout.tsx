@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Source_Serif_4, Inter } from 'next/font/google';
-import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/lib/site';
@@ -74,7 +73,6 @@ export default function RootLayout({
     <html lang="tr" className={`${sourceSerif.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col bg-cream text-charcoal antialiased">
         <JsonLd id="site-json-ld" data={siteJsonLd()} />
-        <Header />
         <main id="main" className="flex-1">
           {children}
         </main>
