@@ -26,9 +26,9 @@ const BRIDGES: Bridge[] = [
   },
   {
     title: 'TomorrowHR',
-    kicker: 'Organizasyon hafızası',
-    text: 'İK ve organizasyon geçmiş uzmanlığı; bugün yönetim sistemi yaklaşımını besleyen damar.',
-    href: 'https://tomorrowhr.co',
+    kicker: 'İK danışmanlığı ve dijital ürünler',
+    text: 'İK danışmanlığı, eğitim ve AI destekli dijital İK çözümleri; danışmanlığın ürünleştiği ana marka.',
+    href: 'https://tomorrowhr.com',
     cta: 'TomorrowHR’a git',
     tone: 'tile-rose',
   },

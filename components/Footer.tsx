@@ -18,9 +18,9 @@ const BRAND_LINKS: BrandLink[] = [
     hint: 'Dikey SaaS',
   },
   {
-    href: 'https://tomorrowhr.co',
+    href: 'https://tomorrowhr.com',
     label: 'TomorrowHR',
-    hint: 'Geçmiş uzmanlık',
+    hint: 'İK danışmanlığı ve dijital ürünler',
   },
 ];
 

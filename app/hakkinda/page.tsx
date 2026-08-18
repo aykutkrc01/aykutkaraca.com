@@ -38,27 +38,71 @@ const PRINCIPLES = [
   'Doğru iş doğru markaya yönlendirilir.',
 ];
 
+const EXPERTISE = [
+  '+20 yıl İnsan Kaynakları deneyimi',
+  'Yönetim ve organizasyon uzmanlığı',
+  'Aile şirketleri yönetimi',
+  'Kuşak yönetimi',
+  'AI & BI teknolojileri uzmanlığı',
+  'Microsoft partnerliği',
+];
+
+const EDUCATION = [
+  'İşletme Fakültesi',
+  'Yönetim ve organizasyon yüksek lisans',
+  'Koç Üniversitesi MBA programı',
+  'ICF bireysel koçluk',
+  'ICF takım koçluğu',
+];
+
 const BRANDS = [
+  {
+    title: 'TomorrowHR',
+    kicker: 'İK danışmanlığı ve dijital ürünler',
+    text: 'Kurucusu olduğu ana marka: İK danışmanlığı, eğitim ve AI destekli dijital İK çözümleri tek çatıda.',
+    href: 'https://tomorrowhr.com',
+    tone: 'tile-ink',
+  },
   {
     title: 'Tomorrow Digital',
     kicker: 'Yönetim sistemi ve uygulama',
     text: 'KOBİ ve aile şirketleri için süreç, KPI, dashboard ve AI destekli teslimat katmanı.',
     href: 'https://tomorrowdigital.com.tr',
-    tone: 'tile-ink',
+    tone: 'tile-peach',
   },
   {
     title: 'TARİF',
     kicker: 'Dikey SaaS',
     text: 'Gıda üreticileri için reçete, üretim, stok ve izlenebilirlik odağı.',
     href: 'https://tarif.co',
-    tone: 'tile-peach',
+    tone: 'tile-rose',
+  },
+];
+
+const TOMORROWHR_PRODUCTS = [
+  {
+    name: 'T-Insight',
+    text: 'İK analitik paneli — organizasyon verisini karar diline çevirir.',
   },
   {
-    title: 'TomorrowHR',
-    kicker: 'Organizasyon hafızası',
-    text: 'İK ve organizasyon geçmiş uzmanlığı; bugünkü yönetim sistemi yaklaşımını besleyen damar.',
-    href: 'https://tomorrowhr.co',
-    tone: 'tile-rose',
+    name: 'T-Reward',
+    text: 'Ücret ve ödüllendirme analitiği — adil ve savunulabilir yapı.',
+  },
+  {
+    name: 'T-Force',
+    text: 'İş gücü verimlilik analitiği — kapasite ve planlama görünürlüğü.',
+  },
+  {
+    name: 'TFlex™',
+    text: 'Modüler İK platformu — ihtiyaca göre birleşen esnek çözümler.',
+  },
+  {
+    name: 'Check-Up',
+    text: 'Kurumsal İK teşhisi — yapı, süreç ve uyum fotoğrafı.',
+  },
+  {
+    name: '5D Impact™',
+    text: 'Danışmanlıktan dijitalleşmeye uzanan dönüşüm yol haritası.',
   },
 ];
 
@@ -90,7 +134,8 @@ export default function HakkindaPage() {
           <p className="mt-[var(--space-2xl)] max-w-[760px] font-sans text-[20px] leading-[1.6] text-[var(--color-warm-gray)] md:text-[24px]">
             Aykut Karaca; Türk KOBİ ve aile şirketleri için karar, rol, KPI,
             süreç, dashboard ve yönetim ritmi kuran stratejik operatördür.
-            Yazılımı küçümsemez; sadece doğru yerine koyar.
+            TomorrowHR&apos;ın kurucusudur: 20 yılı aşkın İK ve organizasyon
+            deneyimini, AI destekli dijital ürünlere çevirir.
           </p>
           <div className="mt-[var(--space-2xl)] flex flex-col gap-[var(--space-md)] sm:flex-row">
             <Link
@@ -128,6 +173,40 @@ export default function HakkindaPage() {
             <span className="mini-pill">KPI</span>
             <span className="mini-pill">Ritim</span>
           </figcaption>
+          <div className="relative mt-[var(--space-lg)] grid grid-cols-2 gap-[var(--space-xl)] rounded-[24px] border border-[rgba(11,11,11,0.07)] bg-[rgba(255,255,255,0.6)] p-[var(--space-lg)] shadow-[var(--shadow-soft)] backdrop-blur-xl">
+            <div>
+              <p className="eyebrow text-[11px] text-[var(--color-warm-gray)]">
+                Uzmanlık
+              </p>
+              <ul className="mt-[var(--space-sm)] flex flex-col gap-[7px]">
+                {EXPERTISE.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-[8px] font-sans text-[12.5px] leading-[1.4] text-[var(--color-charcoal)]"
+                  >
+                    <span className="mt-[6px] h-[4px] w-[4px] shrink-0 rounded-full bg-[var(--color-cat-terra)]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="border-l border-[var(--color-border)] pl-[var(--space-xl)]">
+              <p className="eyebrow text-[11px] text-[var(--color-warm-gray)]">
+                Eğitim
+              </p>
+              <ul className="mt-[var(--space-sm)] flex flex-col gap-[7px]">
+                {EDUCATION.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-[8px] font-sans text-[12.5px] leading-[1.4] text-[var(--color-charcoal)]"
+                  >
+                    <span className="mt-[6px] h-[4px] w-[4px] shrink-0 rounded-full bg-[var(--color-cat-ink)]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </figure>
       </header>
 
@@ -227,6 +306,49 @@ export default function HakkindaPage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="py-[96px]">
+        <div className="grid gap-[var(--space-3xl)] md:grid-cols-[0.85fr_1.15fr]">
+          <div className="md:sticky md:top-[140px] md:self-start">
+            <p className="eyebrow">
+              tomorrow<b className="font-semibold text-[var(--color-teal-deep)]">HR</b>
+            </p>
+            <h2 className="mt-[var(--space-lg)] max-w-[460px] font-sans text-[40px] font-medium leading-[1.06] md:text-[64px]">
+              Danışmanlık, ürünle tamamlanır.
+            </h2>
+            <p className="mt-[var(--space-xl)] max-w-[480px] font-sans text-[18px] leading-[1.7] text-[var(--color-warm-gray)]">
+              TomorrowHR; İK danışmanlığı, eğitim ve dijital çözümleri tek
+              çatıda toplar. Hazır reçete yerine dinleyerek başlar; 5D
+              Impact&trade; yol haritasıyla teşhisten davranış dönüşümüne
+              ilerler. İhtiyaç netleştiğinde aynı know-how, çalışan dijital
+              ürüne dönüşür.
+            </p>
+            <a
+              href="https://tomorrowhr.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-[var(--space-xl)] inline-flex justify-center rounded-full border border-[var(--color-teal-deep)] bg-[var(--color-teal-deep)] px-[var(--space-xl)] py-[14px] font-sans text-[15px] font-medium text-[var(--color-cream)] shadow-[0_18px_38px_rgba(11,125,114,0.25)]"
+            >
+              tomorrowhr.com&apos;u incele
+            </a>
+          </div>
+          <div className="grid gap-[var(--space-md)] sm:grid-cols-2">
+            {TOMORROWHR_PRODUCTS.map((product) => (
+              <div
+                key={product.name}
+                className="surface-raised rounded-[24px] p-[var(--space-lg)]"
+              >
+                <p className="font-sans text-[17px] font-semibold text-[var(--color-charcoal)]">
+                  {product.name}
+                </p>
+                <p className="mt-[var(--space-sm)] font-sans text-[14.5px] leading-[1.55] text-[var(--color-warm-gray)]">
+                  {product.text}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
