@@ -360,6 +360,50 @@ img, picture, video, canvas, svg {
   box-shadow: 0 6px 20px rgba(11, 11, 11, 0.09);
 }
 
+/* Ürün rayı pill'i: koreografide "yanma" durumunu taşır */
+.product-pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  padding: 7px 13px;
+  box-shadow: 0 2px 8px rgba(11, 11, 11, 0.04);
+  transition: border-color 350ms ease-out, box-shadow 350ms ease-out;
+}
+
+.product-pill:hover {
+  border-color: rgba(14, 158, 144, 0.45);
+}
+
+.product-pill[data-lit='true'] {
+  border-color: rgba(14, 158, 144, 0.55);
+  box-shadow: 0 6px 20px rgba(14, 158, 144, 0.18);
+}
+
+/* Kökten raya uçan hayalet ürün pill'i — konum/opaklık her karede JS'ten */
+.chaos-ghost-pill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(14, 158, 144, 0.5);
+  font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-charcoal);
+  box-shadow: 0 8px 22px rgba(14, 158, 144, 0.2);
+  white-space: nowrap;
+  opacity: 0;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
 /* Portre: renksiz, kenarsız, sayfanın dokusuna gömülü */
 .chaos-portrait {
   height: auto;

@@ -119,16 +119,20 @@ function TomorrowHRMark({ size = 22 }: { size?: number }) {
 }
 
 export default function ChaosHero() {
+  const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const statusRef = useRef<HTMLSpanElement>(null);
   const chipRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const ghostRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const railRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useEffect(() => {
+    const section = sectionRef.current;
     const stage = stageRef.current;
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
-    if (!stage || !canvas || !ctx) return;
+    if (!section || !stage || !canvas || !ctx) return;
 
     /* hold=1 test amaçlı: sahneyi ürün halinde sabitler.
        Animasyon her cihazda sürekli çalışır (bilinçli tercih). */
@@ -226,6 +230,25 @@ export default function ChaosHero() {
       }
     }
 
+    /* Koreografi: kökten raya uçuş için sahne ofseti ve ray hedefleri */
+    const stageOff = { x: 0, y: 0 };
+    const ghostTargets: { tx: number; ty: number }[] = [];
+
+    function layoutGhosts() {
+      const sr = section!.getBoundingClientRect();
+      const str = stage!.getBoundingClientRect();
+      stageOff.x = str.left - sr.left;
+      stageOff.y = str.top - sr.top;
+      railRefs.current.forEach((pill, i) => {
+        if (!pill) return;
+        const pr = pill.getBoundingClientRect();
+        ghostTargets[i] = {
+          tx: pr.left - sr.left + pr.width / 2,
+          ty: pr.top - sr.top + pr.height / 2,
+        };
+      });
+    }
+
     function resize() {
       const r = canvas!.getBoundingClientRect();
       W = r.width;
@@ -236,6 +259,7 @@ export default function ChaosHero() {
       ctx!.setTransform(DPR, 0, 0, DPR, 0, 0);
       build();
       layoutChips();
+      layoutGhosts();
     }
 
     function render(o: number, T: number) {
@@ -306,6 +330,58 @@ export default function ChaosHero() {
       }
     }
 
+    /* Koreografi: ürün adları kökten doğar, kavisli uçuşla raya iner,
+       yerine oturan gerçek pill turkuaz parıltıyla yanar */
+    const FLIGHT_START = 8.15;
+    const FLIGHT_GAP = 0.3;
+    const FLIGHT_DUR = 1.0;
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    function updateGhosts(p: number, o: number) {
+      ghostRefs.current.forEach((el, i) => {
+        const pill = railRefs.current[i];
+        const tgt = ghostTargets[i];
+        if (!el || !pill || !tgt) return;
+        if (hold) {
+          el.style.opacity = '0';
+          pill.dataset.lit = 'true';
+          return;
+        }
+        if (o < 0.98) {
+          el.style.opacity = '0';
+          pill.dataset.lit = 'false';
+          return;
+        }
+        const g = (p - (FLIGHT_START + i * FLIGHT_GAP)) / FLIGHT_DUR;
+        if (g <= 0) {
+          el.style.opacity = '0';
+          pill.dataset.lit = 'false';
+          return;
+        }
+        if (g >= 1) {
+          el.style.opacity = '0';
+          pill.dataset.lit = 'true';
+          return;
+        }
+        const e = easeOutCubic(g);
+        const x0 = stageOff.x + (nodes[0]?.x ?? 0);
+        const y0 = stageOff.y + (nodes[0]?.y ?? 0);
+        const xm = (x0 + tgt.tx) / 2;
+        const ym = Math.min(y0, tgt.ty) - 70;
+        const inv = 1 - e;
+        const x = inv * inv * x0 + 2 * inv * e * xm + e * e * tgt.tx;
+        const y = inv * inv * y0 + 2 * inv * e * ym + e * e * tgt.ty;
+        const gw = el.offsetWidth;
+        const gh = el.offsetHeight;
+        const scale = 0.7 + 0.3 * e;
+        el.style.transform = `translate(${(x - gw / 2).toFixed(1)}px, ${(y - gh / 2).toFixed(1)}px) scale(${scale.toFixed(3)})`;
+        const fadeIn = Math.min(1, g / 0.12);
+        const fadeOut = g > 0.86 ? Math.max(0, 1 - (g - 0.86) / 0.14) : 1;
+        el.style.opacity = (fadeIn * fadeOut).toFixed(2);
+        if (g > 0.8) pill.dataset.lit = 'true';
+      });
+    }
+
     let rafId = 0;
     let T0: number | null = null;
     let running = false;
@@ -313,7 +389,9 @@ export default function ChaosHero() {
     function frame(ts: number) {
       if (T0 === null) T0 = ts;
       const T = (ts - T0) / 1000;
-      render(hold ? 1 : autoOrder(T), T);
+      const o = hold ? 1 : autoOrder(T);
+      render(o, T);
+      updateGhosts(T % CYCLE, o);
       if (running) rafId = requestAnimationFrame(frame);
     }
 
@@ -354,6 +432,7 @@ export default function ChaosHero() {
     io.observe(stage);
 
     resize();
+    document.fonts?.ready.then(() => layoutGhosts());
     start();
 
     return () => {
@@ -366,7 +445,10 @@ export default function ChaosHero() {
   }, []);
 
   return (
-    <section className="grid items-center gap-[var(--space-lg)] pb-[var(--space-xl)] pt-[var(--space-2xl)] md:min-h-[92vh] md:grid-cols-[minmax(360px,44%)_1fr] md:gap-[var(--space-xl)] md:pb-[var(--space-2xl)] md:pt-[var(--space-3xl)]">
+    <section
+      ref={sectionRef}
+      className="relative grid items-center gap-[var(--space-lg)] pb-[var(--space-xl)] pt-[var(--space-2xl)] md:min-h-[92vh] md:grid-cols-[minmax(360px,44%)_1fr] md:gap-[var(--space-xl)] md:pb-[var(--space-2xl)] md:pt-[var(--space-3xl)]"
+    >
       <div className="max-w-[480px]">
         <p className="font-mono text-[11.5px] uppercase tracking-[0.16em] text-[var(--color-teal)]">
           Organizasyonel Ürünleştirilmiş Danışmanlık
@@ -433,13 +515,16 @@ export default function ChaosHero() {
             Geliştirilen Ürünler
           </p>
           <div className="mt-[var(--space-md)] flex flex-wrap gap-[8px]">
-            {PRODUCTS.map((product) => (
+            {PRODUCTS.map((product, i) => (
               <a
                 key={product.name}
+                ref={(el) => {
+                  railRefs.current[i] = el;
+                }}
                 href={product.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-baseline gap-[6px] rounded-full border border-[var(--color-border)] bg-white px-[13px] py-[7px] shadow-[0_2px_8px_rgba(11,11,11,0.04)] transition-colors hover:border-[rgba(14,158,144,0.45)]"
+                className="product-pill"
               >
                 <span className="font-sans text-[13px] font-semibold tracking-[-0.01em] text-[var(--color-charcoal)]">
                   {product.name}
@@ -500,6 +585,21 @@ export default function ChaosHero() {
           aria-hidden="true"
           className="chaos-portrait-fade pointer-events-none absolute bottom-[-4px] right-[-10px] z-[4] h-[293px] w-[195px] md:h-[451px] md:w-[300px]"
         />
+      </div>
+
+      {/* Kökten raya uçan hayalet ürün pill'leri */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[6]">
+        {PRODUCTS.map((product, i) => (
+          <span
+            key={product.name}
+            ref={(el) => {
+              ghostRefs.current[i] = el;
+            }}
+            className="chaos-ghost-pill"
+          >
+            {product.name}
+          </span>
+        ))}
       </div>
     </section>
   );
