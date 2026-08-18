@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 type BrandLink = {
   href: string;
   label: string;
@@ -44,18 +42,33 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Orta — bülten hazırlık alanı */}
+          {/* Orta — iletişim */}
           <div className="md:col-span-1">
             <p className="font-sans text-[13px] font-medium text-[var(--color-warm-gray)]">
-              Bülten
+              İletişim
             </p>
-            <p className="mt-[var(--space-sm)] font-sans text-[16px] leading-[1.55] text-[var(--color-charcoal)]">
-              Yazılar yayınlandığında haber veren sade bir bülten altyapısı hazırlanıyor.
-            </p>
-
-            <p className="mt-[var(--space-md)] inline-flex rounded-full bg-[var(--color-surface)] px-[var(--space-lg)] py-[12px] font-sans text-[13px] font-medium text-[var(--color-warm-gray)] shadow-[inset_0_0_0_1px_rgba(11,11,11,0.05)]">
-              Supabase sonrası açılacak
-            </p>
+            <ul className="mt-[var(--space-md)] flex flex-col gap-[var(--space-md)]">
+              <li>
+                <a
+                  href="https://wa.me/905419383012?text=Merhaba%20Aykut%20Bey%2C%20web%20siteniz%20%C3%BCzerinden%20ula%C5%9F%C4%B1yorum."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-sans text-[17px] font-medium text-[var(--color-charcoal)]"
+                >
+                  WhatsApp&apos;tan yaz
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/aykutkaraca/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-sans text-[17px] font-medium text-[var(--color-charcoal)]"
+                >
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Sağ — marka köprüleri */}
@@ -90,32 +103,6 @@ export default function Footer() {
           <p className="font-sans text-[12px] text-[var(--color-warm-gray)]">
             © {year} Aykut Karaca · aykutkaraca.com
           </p>
-          <ul className="flex flex-wrap gap-[var(--space-lg)]">
-            <li>
-              <Link
-                href="/manifesto"
-                className="font-sans text-[12px] text-[var(--color-warm-gray)] hover:text-[var(--color-charcoal)]"
-              >
-                Manifesto
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/dogru-yer-mi"
-                className="font-sans text-[12px] text-[var(--color-warm-gray)] hover:text-[var(--color-charcoal)]"
-              >
-                Doğru yer mi?
-              </Link>
-            </li>
-            <li>
-              <a
-                href="/rss.xml"
-                className="font-sans text-[12px] text-[var(--color-warm-gray)] hover:text-[var(--color-charcoal)]"
-              >
-                RSS
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
     </footer>
