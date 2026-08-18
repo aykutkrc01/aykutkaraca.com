@@ -14,6 +14,14 @@ import { useEffect, useRef } from 'react';
 const TOMORROWHR_URL = 'https://tomorrowhr.com';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/aykutkaraca/';
 
+/* Geliştirilen ürünler — hero altındaki ürün rayı */
+const PRODUCTS = [
+  { name: 'Confluro', role: 'CRM, proje ve finans', href: 'https://www.confluro.com/tr' },
+  { name: 'GURU', role: 'tarif ve üretim', href: 'https://guru.confluro.com/giris' },
+  { name: 'xPer', role: 'performans yönetimi', href: 'https://tomorrowhr-performans.vercel.app/login' },
+  { name: 'HR Platform', role: 'dijital İK süreçleri', href: 'https://tomorrowhr-hr.vercel.app/' },
+];
+
 /* Canvas, CSS değişkenlerini okuyamadığı için sahne renkleri burada sabitlenir */
 const SCENE = {
   teal: '14,158,144',
@@ -417,6 +425,31 @@ export default function ChaosHero() {
             </span>
             <span className="flex-none text-[var(--color-light-gray)]">→</span>
           </a>
+        </div>
+
+        {/* Ürün rayı: danışmanlığın ürünleştiğinin kanıtı */}
+        <div className="mt-[var(--space-2xl)]">
+          <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-[var(--color-light-gray)]">
+            Geliştirilen Ürünler
+          </p>
+          <div className="mt-[var(--space-md)] flex flex-wrap gap-[8px]">
+            {PRODUCTS.map((product) => (
+              <a
+                key={product.name}
+                href={product.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-baseline gap-[6px] rounded-full border border-[var(--color-border)] bg-white px-[13px] py-[7px] shadow-[0_2px_8px_rgba(11,11,11,0.04)] transition-colors hover:border-[rgba(14,158,144,0.45)]"
+              >
+                <span className="font-sans text-[13px] font-semibold tracking-[-0.01em] text-[var(--color-charcoal)]">
+                  {product.name}
+                </span>
+                <span className="font-sans text-[12px] text-[var(--color-warm-gray)]">
+                  {product.role}
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
